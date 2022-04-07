@@ -4,31 +4,62 @@
 	ViewBag.Title = "Index";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
+<style>
+		.content {
+			padding: 40px 0;
+		}
+		/*
+	.filter-wrapper {
+	  padding: 30px 0;
+	}*/
 
-@*<h4>Add Users via Excel</h4>
-<hr />
-@using (Html.BeginForm("UploadExcel", "Clubs", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
-{
-	<div class="form-horizontal">
-		<div class="form-group">
-			<div class="control-label col-md-2">Download Format:</div>
-			<div class="col-md-10">
-				<a href="/User/DownloadExcel/"><img src="~/excel.ico" width="25" height="25" title="Download Excel format" alt="excel" /></a>
+		.filter-checkbox {
+			margin-left: 30px
+		}
+
+			.filter-checkbox:first-child {
+				margin-left: 0
+			}
+</style>
+<h4>Add Users via Excel</h4>
+	<hr />
+	@using (Html.BeginForm("UploadExcel", "Clubs", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
+	{
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="control-label col-md-2">Download Format:</div>
+				<div class="col-md-10">
+					<a href="/User/DownloadExcel/"><img src="~/excel.ico" width="25" height="25" title="Download Excel format" alt="excel" /></a>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-md-2">Excel:</div>
+				<div class="col-md-10">
+					<input type="file" id="FileUpload" name="FileUpload" class="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="control-label col-md-2">Excel:</div>
-			<div class="col-md-10">
-				<input type="file" id="FileUpload" name="FileUpload" class="" />
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+	}
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+<div class="container">
+	<div class="content">
+		<div class="row">
+			<div class="col-8">
+				<div class="filter-wrapper">
+					<input type="checkbox" class="filter-checkbox" value="LGBT" /> LGBT
+				</div>
 			</div>
 		</div>
 	</div>
-}*@
+</div>
 <p>
 	@Html.ActionLink("Create New", "Create")
 </p>
@@ -93,15 +124,26 @@
 	@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
 	@Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
 	<script>
-		 $(document).ready(function () {
-			 $('.table').DataTable({
-				 language: {
-					 searchPlaceholder: "Search products",
-					 search: "",
-				 }
-			 });
-		 });
+		$(document).ready(function () {
+			$('.table').DataTable({
+				language: {
+					searchPlaceholder: "Search products",
+					search: "",
+				}
+			});
+		});
+
+			$('.filter-checkbox').on('change', function (e) {
+				var searchTerms = []
+				$.each($('.filter-checkbox'), function (i, elem) {
+					if ($(elem).prop('checked')) {
+						searchTerms.push("^" + $(this).val() + "$")
+					}
+				})
+				dataTable.column(5).search(searchTerms.join('|'), true, false, true).draw();
+			});
 	</script>
 }
-<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
-	  rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
