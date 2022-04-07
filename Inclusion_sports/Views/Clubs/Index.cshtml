@@ -4,24 +4,8 @@
 	ViewBag.Title = "Index";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
-<style>
-		.content {
-			padding: 40px 0;
-		}
-		/*
-	.filter-wrapper {
-	  padding: 30px 0;
-	}*/
 
-		.filter-checkbox {
-			margin-left: 30px
-		}
-
-			.filter-checkbox:first-child {
-				margin-left: 0
-			}
-</style>
-<h4>Add Users via Excel</h4>
+@*<h4>Add Users via Excel</h4>
 	<hr />
 	@using (Html.BeginForm("UploadExcel", "Clubs", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
 	{
@@ -44,7 +28,7 @@
 				</div>
 			</div>
 		</div>
-	}
+	}*@
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
