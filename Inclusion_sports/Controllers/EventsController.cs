@@ -8,6 +8,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DHTMLX.Common;
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
 using Inclusion_sports.Models;
 using LinqToExcel;
 
@@ -21,13 +24,20 @@ namespace Inclusion_sports.Controllers
         public ActionResult Index()
         {
             return View(db.Events.ToList());
+            
         }
+        public JsonResult GetEvents()
+        {
+                var events = db.Events.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+         
+        }
+
         public FileResult DownloadExcel()
         {
             string path = "~Uploads/cLGBTQ+ friendly event.xlsx";
             return File(path, "application/vnd.ms-excel", "LGBTQ+ friendly event.xlsx");
         }
-
         [HttpPost]
         public JsonResult UploadExcel(Event users, HttpPostedFileBase FileUpload)
         {

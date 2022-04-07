@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Inclusion_sports.Models;
 
 namespace Inclusion_sports.Controllers
 {
@@ -28,5 +29,7 @@ namespace Inclusion_sports.Controllers
         {
             return View();
         }
+
+        
     }
 }
