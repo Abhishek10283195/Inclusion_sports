@@ -1,5 +1,21 @@
 ﻿<!DOCTYPE html>
+<style>
 
+	.container-fuild img {
+		height: 56px;
+	}
+
+	.ownmenu .my-class {
+	font-size: 16px;
+	}
+
+	#wrap {
+	padding: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	}
+
+</style>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
@@ -49,14 +65,14 @@
 		<div id="main-wrapper">
 			<header class="main-header">
 				<div class="container-fuild">
-					<div class="logo"> <a href="#."> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>
+					<div class="logo"> <a href="Home/Index"> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>
 
 					<!-- Nav -->
 					<nav>
 						<ul id="ownmenu" class="ownmenu">
-							<li>@Html.ActionLink("Home", "Index", "Home")</li>
-							<li>@Html.ActionLink("Find Clubs", "Index", "Clubs")</li>
-							<li>@Html.ActionLink("Events", "Index", "Events")</li>
+							<li>@Html.ActionLink("Home", "Index", "Home", new { @class  = "my-class"})</li>
+							<li>@Html.ActionLink("Find Clubs", "Index", "Clubs", new { @class = "my-class" })</li>
+							<li>@Html.ActionLink("Events", "Index", "Events", new { @class = "my-class" })</li>
 						</ul>
 					</nav>
 				</div>
