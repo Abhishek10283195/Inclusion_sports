@@ -4,7 +4,30 @@
 	ViewBag.Title = "Index";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
+<style>
+	.content {
+		padding: 10px 0;
+	}
+	/*
+.filter-wrapper{
+  padding: 30px 0;
+}*/
 
+	.filter-wrapper .filter-checkbox {
+		margin-left: 50px;
+	}
+	.filter-wrapper label{
+		font-size: medium;
+	}
+
+	.filter-wrapper .filter-checkbox:first-child {
+		margin-left: 0px;
+	}
+
+	.table {
+		font-size: medium;
+	}
+</style>
 @*<h4>Add Users via Excel</h4>
 	<hr />
 	@using (Html.BeginForm("UploadExcel", "Clubs", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
@@ -29,6 +52,9 @@
 			</div>
 		</div>
 	}*@
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -38,7 +64,10 @@
 		<div class="row">
 			<div class="col-8">
 				<div class="filter-wrapper">
-					<input type="checkbox" class="filter-checkbox" value="LGBT" /> LGBT
+					<input id="cbox1" type="checkbox" class="filter-checkbox" value="LGBT" />
+					<label for="cbox1">LGBT</label>
+					<input id="cbox2 "type="checkbox" class="filter-checkbox" value="General" />
+					<label for="cbox2">General</label>
 				</div>
 			</div>
 		</div>
@@ -101,13 +130,19 @@
 				</td>
 			</tr>
 		}
+
 	</tbody>
 </table>
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+</body>
 @section Scripts {
 
 	@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
 	@Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
-	<script>
+	@*<script>
 		$(document).ready(function () {
 			$('.table').DataTable({
 				language: {
@@ -115,19 +150,29 @@
 					search: "",
 				}
 			});
-		});
+		});*@
+<script>
+	$(document).ready(function () {
+		dataTable = $('.table').DataTable();
+					});
 
-			$('.filter-checkbox').on('change', function (e) {
-				var searchTerms = []
-				$.each($('.filter-checkbox'), function (i, elem) {
-					if ($(elem).prop('checked')) {
-						searchTerms.push("^" + $(this).val() + "$")
-					}
-				})
-				dataTable.column(5).search(searchTerms.join('|'), true, false, true).draw();
-			});
-	</script>
+
+		//$('.filter-checkbox').on('change', function (e) {
+		//	var category = $(this).val();
+		//	dataTable.column(4).search(category).draw();
+		//});
+
+	$('.filter-checkbox').on('change', function (e) {
+		var searchTerms = []
+		$.each($('.filter-checkbox'), function (i, elem) {
+			if ($(elem).prop('checked')) {
+				searchTerms.push("^" + $(this).val() + "$")
+			}
+		})
+		dataTable.column(4).search(searchTerms.join('|'), true, false, true).draw();
+	});
+
+
+</script>
 }
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
