@@ -48,7 +48,8 @@ body {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	padding: 0px;
+	padding: 20px;
+	padding-top: 0px;
 }
 #main-wrapper {
 	position: relative;
@@ -1496,6 +1497,8 @@ header.main-header nav .ownmenu li {
 	width: 100%;
 }
 .clients-logo ul li {
+	padding-top: 50px;
+	padding-bottom: 50px;
 	text-align: center;
 	border-right: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;

@@ -9,11 +9,17 @@
 	font-size: 16px;
 	}
 
-	#wrap {
-	padding: 0px;
-	padding-bottom: 0px;
-	padding-top: 0px;
+	.footer-up {
+		padding: 0px;
 	}
+
+	#footer {
+		font-family: 'Montserrat', sans-serif;
+		color: white;
+	}
+
+
+
 
 </style>
 <html>
@@ -82,18 +88,29 @@
 	<div>
 		@RenderBody()
 	</div>
-	<!--======= FOOTER UP =========-->
-	@*<div id="wrap">
-		<div id="main-wrapper">
-			<section class="footer-up">
-				<div class="col-md-12">
-					<div class="contact">
-						<p>Inclusion thorugh sports</p>
+	@*<footer id="footer">
+		<div id="wrap">
+			<div id="main-wrapper">
+				<section class="footer-up">
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="footer-info">
+								<h3>INCLUSION THROUGH SPORTS.</h3>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6">
+							<h4>Links.</h4>
+							<ul>
+								<li><a href="#">Home</a></li>
+								<li><a href="Clubs/Index">Find Clubs</a></li>
+								<li><a href="Events/Index">Events</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
-	</div>*@
+	</footer>*@
 	<script src="~/js/jquery-1.11.3.min.js"></script>
 	<script src="~/js/bootstrap.min.js"></script>
 	@RenderSection("Scripts", false)

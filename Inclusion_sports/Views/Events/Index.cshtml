@@ -180,7 +180,9 @@
 
 							end: v.End_time,
 
-							id: v.Id
+							id: v.Id,
+
+							link: v.Link
 
 						});
 
@@ -247,6 +249,8 @@
 						$description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
 
 						$description.append($('<p/>').html('<b>Location: </b>' + calEvent.location));
+
+						$description.append($('<p/>').html('<b>Link: </b>' + calEvent.link));
 
 						$('#myModal #pDetails').empty().html($description);
 
