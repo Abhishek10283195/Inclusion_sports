@@ -1,6 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -59,6 +59,9 @@
     </Reference>
     <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -130,9 +133,6 @@
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Clubs.mdf" />
@@ -142,6 +142,10 @@
     <Content Include="App_Data\Events.mdf" />
     <Content Include="App_Data\Events_log.ldf">
       <DependentUpon>Events.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Maps.mdf" />
+    <Content Include="App_Data\Maps_log.ldf">
+      <DependentUpon>Maps.mdf</DependentUpon>
     </Content>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -464,6 +468,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Events.cs</LastGenOutput>
       <DependentUpon>Events.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Maps.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Maps.edmx</DependentUpon>
+      <LastGenOutput>Maps.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Maps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Maps.edmx</DependentUpon>
+      <LastGenOutput>Maps.cs</LastGenOutput>
     </Content>
     <Content Include="php\submit.php" />
     <Content Include="rs-plugin\assets\arrowleft.png" />
@@ -975,6 +989,13 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <EntityDeploy Include="Models\Maps.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Maps.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Maps.edmx.diagram">
+      <DependentUpon>Maps.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_be.html" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_cn.html" />
@@ -1086,6 +1107,7 @@
     <Content Include="Scripts\locale\vi.js" />
     <Content Include="Scripts\locale\zh-cn.js" />
     <Content Include="Scripts\locale\zh-tw.js" />
+    <Content Include="Scripts\location.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -1098,6 +1120,7 @@
     <Compile Include="Controllers\ClubsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1136,6 +1159,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Events.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Map.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maps.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Maps.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maps.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maps.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Maps.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1207,6 +1248,11 @@
     <Content Include="Views\Clubs\Details.cshtml" />
     <Content Include="Views\Clubs\Edit.cshtml" />
     <Content Include="Views\Clubs\Index.cshtml" />
+    <Content Include="Views\Maps\Create.cshtml" />
+    <Content Include="Views\Maps\Delete.cshtml" />
+    <Content Include="Views\Maps\Details.cshtml" />
+    <Content Include="Views\Maps\Edit.cshtml" />
+    <Content Include="Views\Maps\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
