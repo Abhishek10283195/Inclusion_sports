@@ -10,24 +10,25 @@ var locations = [];
 // The first step is obtain all the latitude and longitude from the HTML
 // The below is a simple jQuery selector
 $(".coordinates").each(function () {
-	var longitude = $(".longitude", this).text().trim();
+	let longitude = $(".longitude", this).text().trim();
 	var latitude = $(".latitude", this).text().trim();
-	var name = $(".name", this).text().trim();
+	var description = $(".name", this).text().trim();
+
 	// Create a point data structure to hold the values.
 	var point = {
 		"latitude": latitude,
 		"longitude": longitude,
-		"name": name
+		"description": description
 	};
 	// Push them all into an array.
 	locations.push(point);
 });
-var data = [];
+var dataa = [];
 for (i = 0; i < locations.length; i++) {
 	var feature = {
 		"type": "Feature",
 		"properties": {
-			"name": locations[i].name,
+			"description": locations[i].description,
 			"icon": "circle-15"
 		},
 		"geometry": {
@@ -35,7 +36,7 @@ for (i = 0; i < locations.length; i++) {
 			"coordinates": [locations[i].longitude, locations[i].latitude]
 		}
 	};
-	data.push(feature)
+	dataa.push(feature)
 }
 mapboxgl.accessToken = TOKEN;
 var map = new mapboxgl.Map({
@@ -53,7 +54,7 @@ map.on('load', function () {
 			"type": "geojson",
 			"data": {
 				"type": "FeatureCollection",
-				"features": data
+				"features": dataa
 			}
 		},
 		"layout": {
@@ -69,7 +70,7 @@ map.on('load', function () {
 	// location of the feature, with description HTML from its properties.
 	map.on('click', 'places', function (e) {
 		var coordinates = e.features[0].geometry.coordinates.slice();
-		var name = e.features[0].properties.name;
+		var description = e.features[0].properties.description;
 		// Ensure that if the map is zoomed out such that multiple
 		// copies of the feature are visible, the popup appears
 		// over the copy being pointed to.
@@ -78,7 +79,7 @@ map.on('load', function () {
 		}
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(name)
+			.setHTML(description)
 			.addTo(map);
 	});
 	// Change the cursor to a pointer when the mouse is over the places layer.

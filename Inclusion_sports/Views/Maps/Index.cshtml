@@ -5,6 +5,31 @@
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 
+<style>
+		.content {
+			padding: 10px 0;
+		}
+		/*
+	.filter-wrapper{
+	  padding: 30px 0;
+	}*/
+
+		.filter-wrapper .filter-checkbox {
+			margin-left: 50px;
+		}
+
+		.filter-wrapper label {
+			font-size: medium;
+		}
+
+		.filter-wrapper .filter-checkbox:first-child {
+			margin-left: 0px;
+		}
+
+		.table {
+			font-size: medium;
+		}
+</style>
 @*<h4>Add Users via Excel</h4>
 	<hr />
 	@using (Html.BeginForm("UploadExcel", "Maps", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
@@ -32,74 +57,123 @@
 @*<p>
 		@Html.ActionLink("Create New", "Create")
 	</p>*@
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
+</head>
 <div id="map" style="height:300px"></div>
+<div class="container">
+	<div class="content">
+		<div class="row">
+			<div class="col-8">
+				<div class="filter-wrapper">
+					<input id="cbox1" type="checkbox" class="filter-checkbox" value="LGBT" />
+					<label for="cbox1">LGBT</label>
+					<input id="cbox2 " type="checkbox" class="filter-checkbox" value="General" />
+					<label for="cbox2">General</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <table class="table">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Name)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Pcode)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Latitude)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Longitude)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Address)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Sports)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Diversity)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Link)
-		</th>
-		<th></th>
-	</tr>
-
-	@foreach (var item in Model)
-	{
-		<tr class="coordinates">
-			<td class="name">
-				@Html.DisplayFor(modelItem => item.Name)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Pcode)
-			</td>
-			<td class="latitude">
-				@Html.DisplayFor(modelItem => item.Latitude)
-			</td>
-			<td class="longitude">
-				@Html.DisplayFor(modelItem => item.Longitude)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Address)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Sports)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Diversity)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Link)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-			</td>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Pcode)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Latitude)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Longitude)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Sports)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Diversity)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Link)
+			</th>
+			<th></th>
 		</tr>
-	}
-
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr class="coordinates">
+				<td class="name">
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Pcode)
+				</td>
+				<td class="latitude">
+					@Html.DisplayFor(modelItem => item.Latitude)
+				</td>
+				<td class="longitude">
+					@Html.DisplayFor(modelItem => item.Longitude)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Sports)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Diversity)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Link)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
 @section Scripts {
+	@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+	@Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+	<script>
+		$(document).ready(function () {
+			dataTable = $('.table').DataTable();
+		});
+
+
+		//$('.filter-checkbox').on('change', function (e) {
+		//	var category = $(this).val();
+		//	dataTable.column(4).search(category).draw();
+		//});
+
+		$('.filter-checkbox').on('change', function (e) {
+			var searchTerms = []
+			$.each($('.filter-checkbox'), function (i, elem) {
+				if ($(elem).prop('checked')) {
+					searchTerms.push("^" + $(this).val() + "$")
+				}
+			})
+			dataTable.column(6).search(searchTerms.join('|'), true, false, true).draw();
+		});
+
+
+	</script>
 	@Scripts.Render("~/bundles/mapbox")
 	<script src="~/Scripts/location.js"></script>
+
 }

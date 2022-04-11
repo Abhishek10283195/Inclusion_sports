@@ -11,13 +11,16 @@ namespace Inclusion_sports.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Map
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Map
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Pcode { get; set; }
+        [DisplayFormat(DataFormatString = "{0:0.00000000}")]
         public Nullable<decimal> Latitude { get; set; }
+        [DisplayFormat(DataFormatString = "{0:0.00000000}")]
         public Nullable<decimal> Longitude { get; set; }
         public string Address { get; set; }
         public string Sports { get; set; }
