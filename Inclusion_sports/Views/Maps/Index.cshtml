@@ -110,37 +110,35 @@
 	<tbody>
 		@foreach (var item in Model)
 		{
-			<tr class="coordinates">
-				<td class="name">
-					@Html.DisplayFor(modelItem => item.Name)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Pcode)
-				</td>
-				<td class="latitude">
-					@Html.DisplayFor(modelItem => item.Latitude)
-				</td>
-				<td class="longitude">
-					@Html.DisplayFor(modelItem => item.Longitude)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Address)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Sports)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Diversity)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Link)
-				</td>
-				<td>
-					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-				</td>
-			</tr>
+		<tr class="coordinates">
+			<td class="name">
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Address)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Sports)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Diversity)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Link)
+			</td>
+
+			<td class="latitude">
+				@Html.DisplayFor(modelItem => item.Latitude)
+			</td>
+			<td class="longitude">
+				@Html.DisplayFor(modelItem => item.Longitude)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
 		}
 	</tbody>
 </table>
@@ -165,7 +163,7 @@
 					searchTerms.push("^" + $(this).val() + "$")
 				}
 			})
-			dataTable.column(6).search(searchTerms.join('|'), true, false, true).draw();
+			dataTable.column(3).search(searchTerms.join('|'), true, false, true).draw();
 		});
 
 
