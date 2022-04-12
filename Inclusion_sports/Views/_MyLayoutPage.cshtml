@@ -9,18 +9,12 @@
 	font-size: 16px;
 	}
 
-	.footer-up {
-		padding: 0px;
+	.logo h3 {
+	margin-left: 20px;
 	}
-
-	#footer {
-		font-family: 'Montserrat', sans-serif;
-		color: white;
+	.main-header {
+	padding-bottom: 0px;
 	}
-
-
-
-
 </style>
 <html>
 <head>
@@ -32,6 +26,8 @@
 	<link href="~/css/main.css" rel="stylesheet" />
 	<link href="~/css/responsive.css" rel="stylesheet" />
 	<link href="~/css/style.css" rel="stylesheet" />
+	@*@Styles.Render("~/Content/css")*@
+	<link href="~/css/Footer.css" rel="stylesheet" />
 	@* This is for the mapbox map. *@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
@@ -80,7 +76,6 @@
 			<header class="main-header">
 				<div class="container-fuild">
 					<div class="logo"> <a href="#."> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>
-
 					<!-- Nav -->
 					<nav>
 						<ul id="ownmenu" class="ownmenu">
@@ -96,29 +91,38 @@
 	<div>
 		@RenderBody()
 	</div>
-	@*<footer id="footer">
-		<div id="wrap">
-			<div id="main-wrapper">
-				<section class="footer-up">
-					<div class="row">
-						<div class="col-lg-3 col-md-6">
-							<div class="footer-info">
-								<h3>INCLUSION THROUGH SPORTS.</h3>
+	<footer class="footer-section">
+		<div class="container">
+			<div class="footer-content pt-5 pb-5">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-widget">
+							<div class="footer-logo">
+								<a href="Home/Index"><img src="~/images/project_logo.png" class="img-fluid" alt="logo"></a>
+							</div>
+							<div class="footer-text">
+								<h3>PRIDE MELBSPORTS.</h3>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-6">
-							<h4>Links.</h4>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-widget">
+							<div class="footer-widget-heading">
+								<h3>Useful Links</h3>
+							</div>
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="Clubs/Index">Find Clubs</a></li>
-								<li><a href="Events/Index">Events</a></li>
+								<li><a href="Index">Home</a></li>
+								<li><a href="#services">Services</a></li>
+								<li><a href="#about">About Us</a></li>
+								<li><a href="Maps/Index">Find Clubs</a></li>
+								<li><a href="Events/Index">Event Calendar</a></li>
 							</ul>
 						</div>
 					</div>
-				</section>
+				</div>
 			</div>
 		</div>
-	</footer>*@
+	</footer>
 	<script src="~/js/jquery-1.11.3.min.js"></script>
 	<script src="~/js/bootstrap.min.js"></script>
 	@RenderSection("Scripts", false)

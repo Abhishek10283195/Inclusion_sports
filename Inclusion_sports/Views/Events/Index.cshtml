@@ -4,7 +4,14 @@
 	ViewBag.Title = "Events";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
-
+<style>
+	.jumbotron {
+		font-family: 'montserratlight';
+	}
+		.jumbotron p {
+			font-size: 20px;
+		}
+</style>
 @*<h2>Index</h2>
 <h4>Add Users via Excel</h4>
 	<hr />
@@ -98,7 +105,16 @@
 		}
 
 	</table>*@
-
+<section class="sectoion-100px events">
+	<div class="jumbotron">
+		<!-- Tittle -->
+		<div class="tittle">
+			<h4>FIND EVENTS HAPPENING AROUND YOU</h4>
+			<p>Tired of finding events on the internet? Here are the upcoming social events you can take part in.</p>
+			<p> Click on the events to find out more</p>
+		</div>
+	</div>
+</section>
 
 <div id="calender"></div>
 
@@ -250,7 +266,10 @@
 
 						$description.append($('<p/>').html('<b>Location: </b>' + calEvent.location));
 
-						$description.append($('<p/>').html('<b>Link: </b>' + calEvent.link));
+						let anchor = document.createElement('a');
+						anchor.href = calEvent.link;
+
+						$description.append($('<p/>').html('<b>Link: </b>' + anchor));
 
 						$('#myModal #pDetails').empty().html($description);
 

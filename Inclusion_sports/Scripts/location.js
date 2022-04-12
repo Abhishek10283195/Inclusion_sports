@@ -12,13 +12,16 @@ var locations = [];
 $(".coordinates").each(function () {
 	let longitude = $(".longitude", this).text().trim();
 	var latitude = $(".latitude", this).text().trim();
-	var description = $(".name", this).text().trim();
+	var name = $(".name", this).text().trim();
+	var address = $(".address", this).text().trim();
+	var description = name + address;
 
 	// Create a point data structure to hold the values.
 	var point = {
 		"latitude": latitude,
 		"longitude": longitude,
-		"description": description
+		"description": description,
+		"address": address
 	};
 	// Push them all into an array.
 	locations.push(point);

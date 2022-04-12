@@ -9,10 +9,6 @@
 		.content {
 			padding: 10px 0;
 		}
-		/*
-	.filter-wrapper{
-	  padding: 30px 0;
-	}*/
 
 		.filter-wrapper .filter-checkbox {
 			margin-left: 50px;
@@ -96,9 +92,6 @@
 				@Html.DisplayNameFor(model => model.Diversity)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Link)
-			</th>
-			<th>
 				@Html.DisplayNameFor(model => model.Latitude)
 			</th>
 			<th>
@@ -123,20 +116,14 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.Diversity)
 			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Link)
-			</td>
-
 			<td class="latitude">
 				@Html.DisplayFor(modelItem => item.Latitude)
 			</td>
 			<td class="longitude">
 				@Html.DisplayFor(modelItem => item.Longitude)
 			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			<td>			
+				@Html.ActionLink("Details", "Details", new { id = item.Id })			
 			</td>
 		</tr>
 		}
@@ -150,11 +137,6 @@
 			dataTable = $('.table').DataTable();
 		});
 
-
-		//$('.filter-checkbox').on('change', function (e) {
-		//	var category = $(this).val();
-		//	dataTable.column(4).search(category).draw();
-		//});
 
 		$('.filter-checkbox').on('change', function (e) {
 			var searchTerms = []
