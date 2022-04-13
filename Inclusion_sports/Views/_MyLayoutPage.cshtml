@@ -1,33 +1,19 @@
 ﻿<!DOCTYPE html>
-<style>
-
-	.container-fuild img {
-		height: 56px;
-	}
-
-	.ownmenu .my-class {
-	font-size: 16px;
-	}
-
-	.logo h3 {
-	margin-left: 20px;
-	}
-	.main-header {
-	padding-bottom: 0px;
-	}
-</style>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-	<link href="~/css/animate.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="~/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="~/css/main.css" rel="stylesheet" />
-	<link href="~/css/responsive.css" rel="stylesheet" />
 	<link href="~/css/style.css" rel="stylesheet" />
+	<link href="~/css/responsive.css" rel="stylesheet" />
+	<link href="~/css/animate.css" rel="stylesheet" />
 	@*@Styles.Render("~/Content/css")*@
+	<link href="~/css/Header.css" rel="stylesheet" />
 	<link href="~/css/Footer.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
 	@* This is for the mapbox map. *@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
@@ -36,15 +22,6 @@
 	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-glgeocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-	<a href="~/fonts/fontawesome-webfont.eot"></a>
-	<a href="~/fonts/fontawesome-webfont.ttf"></a>
-	<a href="~/fonts/fontawesome-webfont.woff"></a>
-	<a href="~/fonts/fontawesome-webfont.woff2"></a>
-	<a href="~/fonts/FontAwesome.otf"></a>
-	<a href="~/fonts/glyphicons-halflings-regular.eot"></a>
-	<a href="~/fonts/glyphicons-halflings-regular.ttf"></a>
-	<a href="~/fonts/glyphicons-halflings-regular.woff"></a>
-	<a href="~/fonts/glyphicons-halflings-regular.woff2"></a>
 	<a href="~/fonts/montserrat-bold-webfont.eot"></a>
 	<a href="~/fonts/montserrat-bold-webfont.ttf"></a>
 	<a href="~/fonts/montserrat-bold-webfont.woff"></a>
@@ -71,11 +48,16 @@
 	<script src="~/js/own-menu.js"></script>
 </head>
 <body>
-	<div id="wrap">
+	@*<div id="wrap">
 		<div id="main-wrapper">
 			<header class="main-header">
 				<div class="container-fuild">
-					<div class="logo"> <a href="#."> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>
+					<div class="logo"> <a href="#."> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>*@
+	<div id="wrap" class="no-padding">
+		<div id="main-wrapper">
+			<header class="main-header">
+				<div class="container">
+					<div class="logo"> <a href="#."> <h4>Pride Melb<span>Sports.</span></h4></a> </div>
 					<!-- Nav -->
 					<nav>
 						<ul id="ownmenu" class="ownmenu">
@@ -98,7 +80,7 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="footer-widget">
 							<div class="footer-logo">
-								<a href="Home/Index"><img src="~/images/project_logo.png" class="img-fluid" alt="logo"></a>
+								<a href="Home/Index"><img src="~/images/logo_ver2.png" class="img-fluid" alt="logo"></a>
 							</div>
 							<div class="footer-text">
 								<h3>PRIDE MELBSPORTS.</h3>

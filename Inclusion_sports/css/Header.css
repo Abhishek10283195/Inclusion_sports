@@ -1,0 +1,62 @@
+﻿.container-fuild img {
+	height: 56px;
+}
+
+.ownmenu .my-class {
+	font-size: 16px;
+}
+
+.main-header .logo {
+	margin: 20px 0px;
+	float: left;
+	display: inline;
+}
+
+.main-header .logo {
+	margin: 20px 0px;
+	float: left;
+	display: inline;
+	font-family: 'Montserrat', sans-serif;
+}
+
+	.main-header .logo:before {
+		background-color: #c50000;
+		content: '';
+		display: block;
+		height: 3px;
+		width: 72px;
+		margin-bottom: 5px;
+	}
+
+	.main-header .logo:after {
+		background-color: #c50000;
+		content: '';
+		display: block;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 3px;
+		width: 96px;
+		margin-bottom: 0.25em;
+	}
+
+
+.main-header {
+	padding-bottom: 0px;
+}
+
+	.main-header nav {
+		float: right;
+	}
+
+nav ul {
+	display: inline;
+}
+
+	nav ul li {
+		display: inline-block;
+	}
+
+.main-header .container {
+	margin: 0px 60px;
+}

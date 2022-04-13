@@ -6,10 +6,9 @@
 }
 
 <style>
-		.content {
-			padding: 10px 0;
-		}
-
+	.map {
+		margin: 10px 0px;
+	}
 		.filter-wrapper .filter-checkbox {
 			margin-left: 50px;
 		}
@@ -134,7 +133,12 @@
 	@Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
 	<script>
 		$(document).ready(function () {
-			dataTable = $('.table').DataTable();
+			dataTable = $('.table').DataTable({
+				language: {
+					searchPlaceholder: "Postcode,Sport etc.",
+					search: "",
+				}
+			});
 		});
 
 

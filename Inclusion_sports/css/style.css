@@ -291,13 +291,7 @@ header {
 	position: relative;
 	font-family: 'Montserrat', sans-serif;
 }
-header .logo {
-	float: left;
-	width: auto;
-	margin: 30px 0;
-	position: relative;
-	z-index: 99;
-}
+
 header nav {
 	display: inline-block;
 	position: relative;
@@ -367,6 +361,7 @@ header ul.dropdown li:hover {
 }
 header.main-header nav .ownmenu li {
 	padding: 0px;
+	float: right;
 }
 /*=======================================================
       HOME SLIDER
