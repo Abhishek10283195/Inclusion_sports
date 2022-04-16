@@ -5,8 +5,8 @@
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 <style>
-	.jumbotron {
-		font-family: 'montserratlight';
+	.jumbotron .tittle h4, p{
+		font-family: 'Montserrat', sans-serif;
 	}
 		.jumbotron p {
 			font-size: 20px;
@@ -254,11 +254,11 @@
 
 						var $description = $('<div/>');
 
-						$description.append($('<p/>').html('<b>Start: </b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+						$description.append($('<p/>').html('<b>Start: </b>' + calEvent.start.format("DD-MMM-YYYY HH:mm")));
 
 						if (calEvent.end != null) {
 
-							$description.append($('<p/>').html('<b>End: </b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+							$description.append($('<p/>').html('<b>End: </b>' + calEvent.end.format("DD-MMM-YYYY HH:mm")));
 
 						}
 
