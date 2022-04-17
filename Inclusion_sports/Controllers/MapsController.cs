@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,11 +19,26 @@ namespace Inclusion_sports.Controllers
     {
         private MapsEntities db = new MapsEntities();
 
-        // GET: Maps
-        public ActionResult Index()
+		// GET: Maps
+		public ActionResult Index()
+		{
+			return View(db.Maps.ToList());
+		}
+
+
+
+		public JsonResult GetMapMarker()
         {
-            return View(db.Maps.ToList());
+            var ListOfAddress = db.Maps.ToList();
+
+            return Json(ListOfAddress, JsonRequestBehavior.AllowGet);
         }
+
+
+
+
+
+
 
         // GET: Maps/Details/5
         public ActionResult Details(int? id)
