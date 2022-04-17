@@ -231,7 +231,7 @@
 				keep = true;
 				mapset = map;
 				for (opt = 0; opt < set_filters.length; opt++) {
-					if (!marker.properties[set_filters[opt]]) {
+					if (!console.log(marker.properties == set_filters[opt])) {
 						keep = false;
 					}
 				}
@@ -263,7 +263,7 @@
 					position: myLatlng,
 					title: data.title,
 					map: map,
-/*						properties: val["properties"]*/
+					properties: data.description
 					});
 
 					var markerInfo =
@@ -287,21 +287,20 @@
 				url: '/Maps/GetMapMarker',
 				type: 'GET',
 				success: function (data) {
-					//create a blank array
-					var markers = [];
+
 
 					//loop the list of addresses returned from Ajax request
 					$.each(data, function (index, item) {
 						//create a blank array of address
-						var marker = {};
+						var markerex = {};
 						//fill data
-						marker["title"] = item.Name;
-						marker["lat"] = item.Latitude;
-						marker["lng"] = item.Longitude;
-						marker["description"] = item.Diversity;
+						markerex["title"] = item.Name;
+						markerex["lat"] = item.Latitude;
+						markerex["lng"] = item.Longitude;
+						markerex["description"] = item.Diversity;
 
 						//push the current marker details in markers array
-						markers.push(marker);
+						markers.push(markerex);
 					})
 					//call Map function with all markers passed as list of arrays
 					loadMarkers(markers);
@@ -324,10 +323,6 @@
 	</script>
 
 }
-
-
-
-
 
 
 
