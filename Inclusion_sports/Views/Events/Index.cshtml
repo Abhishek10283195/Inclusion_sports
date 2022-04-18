@@ -36,11 +36,9 @@
 				</div>
 			</div>
 		</div>
-	}
-	<p>
-		@Html.ActionLink("Create New", "Create")
-	</p>
-	<table class="table">
+	}*@
+
+	@*<table class="table">
 		<tr>
 			<th>
 				@Html.DisplayNameFor(model => model.Organiser)
@@ -104,10 +102,13 @@
 			</tr>
 		}
 
-	</table>*@
+	</table>
+
+	<p>
+		@Html.ActionLink("Create New", "Create")
+	</p>*@
 <section class="sectoion-100px events">
 	<div class="jumbotron">
-		<!-- Tittle -->
 		<div class="tittle">
 			<h4>FIND EVENTS HAPPENING AROUND YOU</h4>
 			<p>Tired of finding events on the internet? Here are the upcoming social events you can take part in.</p>
@@ -194,7 +195,7 @@
 
 							start: moment(v.Start_time),
 
-							end: v.End_time,
+							end: moment(v.End_time),
 
 							id: v.Id,
 

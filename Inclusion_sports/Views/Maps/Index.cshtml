@@ -6,9 +6,7 @@
 }
 <style>
 	#MapDiv {
-		width: 100%;
-		object-fit: cover;
-		object-position:center;
+		position: center;
 	}
 
 	.filter-wrapper .filter-checkbox {
@@ -74,6 +72,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -88,14 +87,16 @@
 					<label for="cbox1">LGBT</label>
 					<input id="cbox2 " type="checkbox" class="filter-checkbox" value="General" />
 					<label for="cbox2">General</label>
+					<button id="tbl">Table view</button>
+					<button id="mp">Map View</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div>
-		<div class="col-md-6">
-			<table class="table">
+
+			<table class="table" id="thistable" style="display:none">
 				<thead>
 					<tr>
 						<th>
@@ -136,21 +137,21 @@
 					}
 				</tbody>
 			</table>
-		</div>
-		<div class="col-md-6" id="buttons">
 
-			<input type="checkbox" name="filter" id="LGBT" class='chk-btn'>
+		<div id="buttons">
+
+			<input type="checkbox" name="filter" id="LGBT" class='chk-btn' style="display:none">
 			<label for='LGBT'>LGBT</label>
 
-			<input type="checkbox" name="filter" id="General" class='chk-btn'>
+			<input type="checkbox" name="filter" id="General" class='chk-btn' style="display:none">
 			<label for='General'>General</label>
 
-			<input type="checkbox" name="filter" id="clear" class='chk-btn'>
+			<input type="checkbox" name="filter" id="clear" class='chk-btn' style="display:none">
 			<label for='clear'>Clear Filters</label>
 			<br>
 		</div>
 		<br>
-		<div class="col-md-6" id="MapDiv" style="width: 500px; height: 500px"></div>
+		<div id="MapDiv" style="display:none; width: 500px; height: 500px"></div>
 
 </div>
 @section Scripts {
@@ -181,7 +182,21 @@
 	</script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2zNOkQ0ev-uxWXosXHAY4vHSNQ7s0phg"></script>
 	<script>
-			var map;
+		$(document).ready(function () {
+			$("#mp").click(function () {
+				$("#MapDiv").toggle();
+				$("#thistable").hide();
+			});
+			$("#tbl").click(function () {
+				$("#thistable").toggle();
+				$("#MapDiv").hide();
+			});
+		});
+	</script>
+	<script>
+
+
+		var map;
 		var markers = [];
 		var filteredMarkers = [];
 
