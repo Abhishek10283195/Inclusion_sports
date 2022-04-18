@@ -5,60 +5,45 @@
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 <style>
+	#MapDiv {
+		width: 100%;
+		object-fit: cover;
+		object-position:center;
+	}
+
+	.filter-wrapper .filter-checkbox {
+		margin-left: 50px;
+	}
+
+	.filter-wrapper label {
+		font-size: medium;
+	}
+
+	.filter-wrapper .filter-checkbox:first-child {
+		margin-left: 0px;
+	}
 	input.chk-btn {
 		display: none;
 	}
 
-		input.chk-btn + label {
-			border: 1px solid grey;
-			background: ghoswhite;
-			padding: 5px 8px;
-			cursor: pointer;
-			border-radius: 5px;
-		}
+	input.chk-btn + label {
+		border: 1px solid grey;
+		background: ghoswhite;
+		padding: 5px 8px;
+		cursor: pointer;
+		border-radius: 5px;
+	}
 
-		input.chk-btn:not(:checked) + label:hover {
-			box-shadow: 0px 1px 3px;
-		}
+	input.chk-btn:not(:checked) + label:hover {
+		box-shadow: 0px 1px 3px;
+	}
 
-		input.chk-btn + label:active,
-		input.chk-btn:checked + label {
-			box-shadow: 0px 0px 3px inset;
-			background: #8cc472;
-		}
+	input.chk-btn + label:active,
+	input.chk-btn:checked + label {
+		background: ghoswhite;
+	}
 </style>
-@*<style>
-	/*	.map {
-			margin: 10px 0px;
-			padding-top: 30px;
-		}*/
-		.map-position {
-			position: fixed;
-			top: 130px;
-			left: 50%;
-	/*		margin-left: 60%;*/
-			min-width: 100%;
-			min-height: 50%;
-			width: auto;
-			height: 50%;
-	/*		transform: translate(-50%, -50%);*/
-		}
-			.filter-wrapper .filter-checkbox {
-				margin-left: 50px;
-			}
 
-			.filter-wrapper label {
-				font-size: medium;
-			}
-
-			.filter-wrapper .filter-checkbox:first-child {
-				margin-left: 0px;
-			}
-
-			.table {
-				font-size: medium;
-			}
-	</style>*@
 @*<h4>Add Users via Excel</h4>
 		<hr />
 		@using (Html.BeginForm("UploadExcel", "Maps", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
@@ -109,7 +94,6 @@
 	</div>
 </div>
 <div>
-	<div class="container-fuild">
 		<div class="col-md-6">
 			<table class="table">
 				<thead>
@@ -137,7 +121,7 @@
 								@Html.DisplayFor(modelItem => item.Name)
 							</td>
 							<td>
-								@Html.DisplayFor(modelItem => item.Address)
+								@Html.DisplayFor(modelItem => item.Address) 
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.Sports)
@@ -160,12 +144,14 @@
 
 			<input type="checkbox" name="filter" id="General" class='chk-btn'>
 			<label for='General'>General</label>
+
+			<input type="checkbox" name="filter" id="clear" class='chk-btn'>
+			<label for='clear'>Clear Filters</label>
 			<br>
 		</div>
 		<br>
 		<div class="col-md-6" id="MapDiv" style="width: 500px; height: 500px"></div>
-		<div class="col-md-6" id="campground_info"></div>
-	</div>
+
 </div>
 @section Scripts {
 	@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
@@ -195,132 +181,112 @@
 	</script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2zNOkQ0ev-uxWXosXHAY4vHSNQ7s0phg"></script>
 	<script>
-		var map;
+			var map;
 		var markers = [];
+		var filteredMarkers = [];
 
-		// start out with filter features set to false, so no filtering happens by default
-		var filters = { LGBT: false, General: false };
 
-		$(function () {
-			$("input[name=filter]").change(function (e) {
-				map_filter(this.id);
-				filter_markers();
-			});
-		});
-
-		var get_set_options = function () {
-			ret_array = [];
-			for (option in filters) {
-				if (filters[option]) {
-					ret_array.push(option);
-				}
-			}
-			return ret_array;
-		};
-
-		var filter_markers = function () {
-			set_filters = get_set_options();
-
-			// for each marker, check to see if all required options are set
-			for (i = 0; i < markers.length; i++) {
-				marker = markers[i];
-
-				// start the filter check assuming the marker will be displayed
-				// if any of the required features are missing, set 'keep' to false
-				// to discard this marker
-				keep = true;
-				mapset = map;
-				for (opt = 0; opt < set_filters.length; opt++) {
-					if (!console.log(marker.properties == set_filters[opt])) {
-						keep = false;
-					}
-				}
-				marker.setVisible(keep);
-			}
-		};
-
-		var map_filter = function (id_val) {
-			if (filters[id_val]) filters[id_val] = false;
-			else filters[id_val] = true;
-		};
-
-		// after the geojson is loaded, iterate through the map data to create markers
-		// and add the pop up (info) windows
-		function loadMarkers(markers) {
-			console.log(markers);
-			var GoogleMapOptions = {
-				center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
-				zoom: 6,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			var infoWindow = new google.maps.InfoWindow();
-			var map = new google.maps.Map(document.getElementById("MapDiv"), GoogleMapOptions);
-			for (i = 0; i < markers.length; i++) {
-				// Post select to url.
-				var data = markers[i]
-				var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-				var marker = new google.maps.Marker({
+			// after the geojson is loaded, iterate through the map data to create markers
+			// and add the pop up (info) windows
+			function loadMarkers(markers) {
+				console.log(markers);
+				var GoogleMapOptions = {
+					center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+					zoom: 6,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var infoWindow = new google.maps.InfoWindow();
+				map = new google.maps.Map(document.getElementById("MapDiv"), GoogleMapOptions);
+				for (i = 0; i < markers.length; i++) {
+					// Post select to url.
+					var data = markers[i]
+					var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+					var marker = new google.maps.Marker({
 					position: myLatlng,
 					title: data.title,
-					map: map,
+/*					map: map,*/
 					properties: data.description
 					});
-
-					var markerInfo =
-						"<div><h3>" +
-						data.title +
-						"</h3>Diversity: " +
-						data.description +
-						"</div>";
-				(function (marker, data) {
-					google.maps.event.addListener(marker, "click", function (e) {
-						infoWindow.close();
-						infoWindow.setContent(data.title);
+					marker.setMap(map);
+					filteredMarkers.push(marker);
+					
+					(function (marker, data) {
+						google.maps.event.addListener(marker, "click", function (e) {
+							infoWindow.close();
+							var markerInfo = "<div><h3>" + data.title + "</h3>Diversity: " + data.description + "<br />Sports: " + data.sports + "</div>";
+						infoWindow.setContent(markerInfo);
 						infoWindow.open(map, marker);
-					});					
-				})(marker, data);
-			}
-		}
-
-		function initMap() {
-			$.ajax({
-				url: '/Maps/GetMapMarker',
-				type: 'GET',
-				success: function (data) {
-
-
-					//loop the list of addresses returned from Ajax request
-					$.each(data, function (index, item) {
-						//create a blank array of address
-						var markerex = {};
-						//fill data
-						markerex["title"] = item.Name;
-						markerex["lat"] = item.Latitude;
-						markerex["lng"] = item.Longitude;
-						markerex["description"] = item.Diversity;
-
-						//push the current marker details in markers array
-						markers.push(markerex);
-					})
-					//call Map function with all markers passed as list of arrays
-					loadMarkers(markers);
-
+						});
+					})(marker, data);
 				}
-			});
-			//map_options = {
-			//	zoom: 10,
-			//	mapTypeId: google.maps.MapTypeId.HYBRID,
-			//	center: { lat: 42.9456, lng: -122.2 }
-			//};
+			}
 
-			//map_document = document.getElementById("MapDiv");
-			//map = new google.maps.Map(map_document, map_options);
-			//loadMarkers();
-		}
+			function initMap() {
+				$.ajax({
+					url: '/Maps/GetMapMarker',
+					type: 'GET',
+					success: function (data) {
+
+
+						//loop the list of addresses returned from Ajax request
+						$.each(data, function (index, item) {
+							//create a blank array of address
+							var markerex = {};
+							//fill data
+							markerex["title"] = item.Name;
+							markerex["lat"] = item.Latitude;
+							markerex["lng"] = item.Longitude;
+							markerex["description"] = item.Diversity;
+							markerex["sports"] = item.Sports;
+						
+
+							//push the current marker details in markers array
+							markers.push(markerex);
+						})
+						//call Map function with all markers passed as list of arrays
+						loadMarkers(markers);
+
+					}
+				});
+
+			}
 
 		google.maps.event.addDomListener(window, "load", initMap);
 
+		function filterLGBT() {
+			console.log(filteredMarkers);
+			for (i = 0; i < filteredMarkers.length; i++) {
+				if (filteredMarkers[i].properties == "LGBT")
+					filteredMarkers[i].setMap(map);
+				else
+					filteredMarkers[i].setMap(null);
+			}
+		}
+
+		function filterGeneral() {
+			console.log(filteredMarkers);
+			for (i = 0; i < filteredMarkers.length; i++) {
+				if (filteredMarkers[i].properties == "General")
+					filteredMarkers[i].setMap(map);
+				else
+					filteredMarkers[i].setMap(null);
+			}
+		}
+
+
+		function clearFilters() {
+			
+			for (i = 0; i < filteredMarkers.length; i++)
+					filteredMarkers[i].setMap(map);
+
+		}
+		document.getElementById("LGBT").onclick = filterLGBT;
+		document.getElementById("General").onclick = filterGeneral;
+		document.getElementById("clear").onclick = clearFilters;
+
+
 	</script>
+
 
 }
 
