@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "Rights";
+    Layout = "~/Views/_MyLayoutPage.cshtml";
+}
+<style>
+	*, *::before, *::after {
+		box-sizing: border-box;
+		font-family: 'Montserrat', sans-serif;
+	}
+/*
+	body {
+		padding: 0;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100vw;
+		height: 100vh;
+		background-color: #333;
+	}*/
+
+	#gamec {
+		width: 800px;
+		max-width: 80%;
+		background-color: white;
+		padding: 10px;
+		border-radius: 5px;
+		box-shadow: 0 0 10px 2px;
+	}
+
+	.btn-grid {
+		display: grid;
+		grid-template-columns: repeat(2, auto);
+		gap: 10px;
+		margin-top: 20px;
+	}
+
+	.btn {
+		background-color: hsl(200, 100%, 50%);
+		border: 1px solid hsl(200, 100%, 30%);
+		border-radius: 5px;
+		padding: 5px 10px;
+		color: white;
+		outline: none;
+	}
+
+		.btn:hover {
+			border-color: black;
+		}
+
+</style>
+
+
+<div class="container" id="gamec">
+	<div id="text">Text</div>
+	<div id="option-buttons" class="btn-grid">
+		<button class="btn">Option 1</button>
+		<button class="btn">Option 2</button>
+		<button class="btn">Option 3</button>
+		<button class="btn">Option 4</button>
+	</div>
+</div>
+
+@section Scripts{
+<script>
+	const textElement = document.getElementById('text')
+	const optionButtonsElement = document.getElementById('option-buttons')
+
+	let state = {}
+
+	function startGame() {
+		state = {}
+		showTextNode(1)
+	}
+
+	function showTextNode(textNodeIndex) {
+		const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+		textElement.innerText = textNode.text
+		while (optionButtonsElement.firstChild) {
+			optionButtonsElement.removeChild(optionButtonsElement.firstChild)
+		}
+
+		textNode.options.forEach(option => {
+			if (showOption(option)) {
+				const button = document.createElement('button')
+				button.innerText = option.text
+				button.classList.add('btn')
+				button.addEventListener('click', () => selectOption(option))
+				optionButtonsElement.appendChild(button)
+			}
+		})
+	}
+
+	function showOption(option) {
+		return option.requiredState == null || option.requiredState(state)
+	}
+
+	function selectOption(option) {
+		const nextTextNodeId = option.nextText
+		if (nextTextNodeId <= 0) {
+			return startGame()
+		}
+		state = Object.assign(state, option.setState)
+		showTextNode(nextTextNodeId)
+	}
+
+	const textNodes = [
+		{
+			id: 1,
+			text: 'Background:' + '\n' + 'Jessica discovered a few years ago that she had her own attitude about sex and married with Katherine. She is a sports lover and wants to keep fit through sports. Recently, both Jessica and Katherine submitted applications to join atheir local sports club',
+			options: [
+				{
+					text: 'To Scenario 1',
+					/*setState: { blueGoo: true },*/
+					nextText: 2
+				}
+			]
+		},
+		{
+			id: 2,
+			text: 'Scenario 1' + '\n' + 'When Jessica follows up on her application to a sports club, she is told that the club will not take new members because of the full capacity and her application has been rejected.',
+			options: [
+				{
+					text: 'Argue with the club',
+					/*setState: { blueGoo: true },*/
+					nextText: 3
+				},
+				{
+					text: 'Accept the rejection',
+					nextText: 4
+				},
+				{
+					text: 'Back to Background page',
+					nextText: -1
+				}
+			]
+		},
+		{
+			id: 3,
+			text: 'She says' + '\n' + 'Unless with special measure or fall within any of the relevant exemptions,it is against the law for a club to discriminate against an applicant for club membership based on their personal characteristic.',
+			options: [
+				{
+					text: 'To Scenario 2',
+					//            requiredState: (currentState) => currentState.blueGoo,
+					//            setState: { blueGoo: false, sword: true },
+					            nextText: 5
+				}
+				//        {
+				//            text: 'Trade the goo for a shield',
+				//            requiredState: (currentState) => currentState.blueGoo,
+				//            setState: { blueGoo: false, shield: true },
+				//            nextText: 3
+				//        },
+				//        {
+				//            text: 'Ignore the merchant',
+				//            nextText: 3
+				//        }
+			]
+		},
+		{
+			id: 4,
+			text: 'Jessica and Katherine could not join the club',
+			options: [
+				{
+					text: 'Back to scenario 1',
+					            nextText: 2
+				}
+    //        {
+    //            text: 'Find a room to sleep at in the town',
+    //            nextText: 5
+    //        },
+    //        {
+    //            text: 'Find some hay in a stable to sleep in',
+    //            nextText: 6
+    //        }
+        ]
+		},
+		{
+		    id: 5,
+			text: 'Scenario 2' + '\n' + 'Jessica enjoys sports and often attends the activities and events held by the clubs. Recently, she received an email saying that the club is currently offering a lifetime membership options to their current club members, which will have a discount on the membership fee. Jessica, along with her friend Alex decide to apply for the lifetime membership. Jessica’s application was rejected unfortunately due to the limited capacity. However, several days later, Jessica finds that Alex got the lifetime membership. Jessica decides to',
+		    options: [
+		        {
+		            text: 'Argue with the club',
+		            nextText: 6
+				},
+				{
+					text: 'Accept the situation',
+					nextText: 7
+				}
+		    ]
+		},
+		{
+		    id: 6,
+			text: 'She says' + '\n' + 'Unless with special measure or fall within any of the relevant exemptions, it is against the law for a club to discriminate against a club member based on their personal characteristic:',
+		    options: [
+		        {
+		            text: 'To Scenario 3',
+		            nextText: 8
+		        }
+		    ]
+		},
+		{
+		    id: 7,
+		    text: 'Jessica did not get a lifetime membership. She has to pay $20 extra than what Alex is paying',
+		    options: [
+		        {
+		            text: 'Back to Scenario 2',
+		            nextText: 5
+		        }
+		    ]
+		},
+		{
+		    id: 8,
+			text: 'Scenario 3' + '\n' + 'Jessica has stored some equipment belong to her and Katherine in the storage room of the sports club. Recently, when she gets her stuff, she can hear the unfriendly verbal from other peers. Last week, another member in the clubs says: “your partner and youyou and your wife are not welcomed by the club.” , and there is no stuff show up to stop it. Jessica decides to',
+		    options: [
+		        {
+		            text: 'Take a stand',
+		            nextText: 9
+		        },
+		        {
+		            text: 'Let it go',
+		            nextText: 10
+		        }
+		//        {
+		//            text: 'Hide behind your shield',
+		//            requiredState: (currentState) => currentState.shield,
+		//            nextText: 10
+		//        },
+		//        {
+		//            text: 'Throw the blue goo at it',
+		//            requiredState: (currentState) => currentState.blueGoo,
+		//            nextText: 11
+		//        }
+		    ]
+		},
+		{
+			id: 9,
+			text: 'She says' + '\n' + 'Every Victorian has the right to equal and effective protection against discrimination, and to enjoy their human rights without discrimination. When participating in sports, it is against the law for someone be treated unfairly or be bullied because of a personal characteristic. The member should apologize for the verbal discrimination, or she will make the complaint about the discrimination.',
+			options: [
+				{
+					text: 'To Scenario 4',
+					nextText: -1
+				}
+			]
+		},
+		{
+		    id: 10,
+			text: 'Jessica and Katherine are discriminated against every time they meet the member.',
+		    options: [
+		        {
+		            text: 'Back to Scenario 3',
+		            nextText: 8
+		        }
+		    ]
+		}
+		//{
+		//    id: 10,
+		//    text: 'The monster laughed as you hid behind your shield and ate you.',
+		//    options: [
+		//        {
+		//            text: 'Restart',
+		//            nextText: -1
+		//        }
+		//    ]
+		//},
+		//{
+		//    id: 11,
+		//    text: 'You threw your jar of goo at the monster and it exploded. After the dust settled you saw the monster was destroyed. Seeing your victory you decide to claim this castle as your and live out the rest of your days there.',
+		//    options: [
+		//        {
+		//            text: 'Congratulations. Play Again.',
+		//            nextText: -1
+		//        }
+		//    ]
+		//}
+	]
+
+	startGame()
+</script>
+} 
