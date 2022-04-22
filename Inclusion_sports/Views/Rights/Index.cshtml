@@ -222,16 +222,6 @@
 		            text: 'Let it go',
 		            nextText: 10
 		        }
-		//        {
-		//            text: 'Hide behind your shield',
-		//            requiredState: (currentState) => currentState.shield,
-		//            nextText: 10
-		//        },
-		//        {
-		//            text: 'Throw the blue goo at it',
-		//            requiredState: (currentState) => currentState.blueGoo,
-		//            nextText: 11
-		//        }
 		    ]
 		},
 		{
@@ -240,7 +230,7 @@
 			options: [
 				{
 					text: 'To Scenario 4',
-					nextText: -1
+					nextText: 11
 				}
 			]
 		},
@@ -253,27 +243,103 @@
 		            nextText: 8
 		        }
 		    ]
+		},
+		{
+			id: 11,
+			text: 'Scenario 4' + '\n' + 'Jessica doesn not give up and decides to file a complaint to the club.She finds the club manager and describes the situation.However, the club manager says this is a personal question and there is nothing they can do about it',
+			options: [
+				{
+					text: 'Take a stand',
+					nextText: 12
+				},
+				{
+					text: 'Give up complaining',
+					nextText: 13
+				}
+			]
+		},
+		{
+			id: 12,
+			text: 'She says' + '\n' + 'Clubs have a legal responsibility to make sure that all members, staff and everyone who uses their services are treated fairly and with respect. They have a positive duty to eliminate discrimination, sexual harassment, and victimisation as far as possible',
+			options: [
+				{
+					text: 'To Scenario 5',
+					nextText: 14
+				}
+			]
+		},		
+		{
+			id: 13,
+			text: 'Jessica and Katherine are discriminated against every time they meet the member.',
+			options: [
+				{
+					text: 'Back to Scenario 4',
+					nextText: 11
+				}
+			]
+		},
+		{
+			id: 14,
+			text: 'Scenario 5' + '\n' + 'Jessica decides to seek the help from Victorian Equal Opportunity and Human Rights Commission through:',
+			options: [
+				{
+					text: 'Call them',
+					nextText: 15
+				},
+				{
+					text: 'Email',
+					nextText: 16
+				},
+				{
+					text: 'Fill an online Complaint form',
+					nextText: 17
+				},
+				{
+					text: 'Use the community reporting tool',
+					nextText: 18
+				}
+			]
+		},
+		{
+			id: 15,
+			text: 'They provide a free phone service that provides information about discrimination, victimisation, and equal opportunity and human rights in Victoria. Call on weekdays from 10am to 3pm' + '\n' + 'Call 1300 292 153',
+			options: [
+				{
+					text: 'Back',
+					nextText: 14
+				}
+			]
+		},
+		{
+			id: 16,
+			text: 'Send them an email with issues and they will get back to you as soon as they can to provide information about rights under Victorian law.' + '\n' + 'Email them at enquiries@veohrc.vic.gov.au',
+			options: [
+				{
+					text: 'Back',
+					nextText: 14
+				}
+			]
+		},
+		{
+			id: 17,
+			text: 'Your personal information will be used and stored in accordance with the Privacy and Data Protection Act 2014 (Vic). If they cannot provide our dispute resolution service to you, they will give you information about other organisations or services that might be able to help.' + '\n' + 'https://webforms.humanrights.vic.gov.au/prd?entitytype=Case&layoutcode=ComplaintWebForm&Refresh=True',
+			options: [
+				{
+					text: 'Back',
+					nextText: 14
+				}
+			]
+		},
+		{
+			id: 18,
+			text: 'If you want to tell them about your experience, but you do not want to make a formal complaint, you can make a report to them using our Community Reporting Tool.' + '\n' + 'https://www.humanrights.vic.gov.au/get-help/community-reporting-tool/',
+			options: [
+				{
+					text: 'Back',
+					nextText: 14
+				}
+			]
 		}
-		//{
-		//    id: 10,
-		//    text: 'The monster laughed as you hid behind your shield and ate you.',
-		//    options: [
-		//        {
-		//            text: 'Restart',
-		//            nextText: -1
-		//        }
-		//    ]
-		//},
-		//{
-		//    id: 11,
-		//    text: 'You threw your jar of goo at the monster and it exploded. After the dust settled you saw the monster was destroyed. Seeing your victory you decide to claim this castle as your and live out the rest of your days there.',
-		//    options: [
-		//        {
-		//            text: 'Congratulations. Play Again.',
-		//            nextText: -1
-		//        }
-		//    ]
-		//}
 	]
 
 	startGame()
