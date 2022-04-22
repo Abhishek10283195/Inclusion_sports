@@ -53,7 +53,9 @@
 
 
 <div class="container" id="gamec">
+	<div id="heading"><h3>Text</h3></div>
 	<div id="text">Text</div>
+	<div id="bot">Text</div>
 	<div id="option-buttons" class="btn-grid">
 		<button class="btn">Option 1</button>
 		<button class="btn">Option 2</button>
@@ -65,7 +67,15 @@
 @section Scripts{
 <script>
 	const textElement = document.getElementById('text')
+	const headElement = document.getElementById('heading')
+	const botElement = document.getElementById('bot')
+	const note = document.querySelector('#heading')
+	const bot = document.querySelector('#bot')
 	const optionButtonsElement = document.getElementById('option-buttons')
+
+	note.style.fontSize = '22px'
+	note.style.fontWeight = 'bold'
+	bot.style.fontWeight = 'bold'
 
 	let state = {}
 
@@ -76,7 +86,9 @@
 
 	function showTextNode(textNodeIndex) {
 		const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+		headElement.innerText = textNode.head
 		textElement.innerText = textNode.text
+		botElement.innerText = textNode.bot
 		while (optionButtonsElement.firstChild) {
 			optionButtonsElement.removeChild(optionButtonsElement.firstChild)
 		}
@@ -108,22 +120,25 @@
 	const textNodes = [
 		{
 			id: 1,
-			text: 'Background:' + '\n' + 'Jessica discovered a few years ago that she had her own attitude about sex and married with Katherine. She is a sports lover and wants to keep fit through sports. Recently, both Jessica and Katherine submitted applications to join atheir local sports club',
+			head: 'BACKGROUND',
+			text: '\n' + 'Jessica discovered her sexual orientation a few years ago and is now happily married to Katherine. She is a sportsperson and wants to keep fit through sports. Recently, both Jessica and Katherine submitted applications to join a local sports club',
+			bot: '',
 			options: [
 				{
-					text: 'To Scenario 1',
-					/*setState: { blueGoo: true },*/
+					text: 'Next',
 					nextText: 2
 				}
 			]
 		},
 		{
 			id: 2,
-			text: 'Scenario 1' + '\n' + 'When Jessica follows up on her application to a sports club, she is told that the club will not take new members because of the full capacity and her application has been rejected.',
+			head: 'SCENARIO 1',
+			text: '\n' + 'When Jessica follows up on her application to the sports club, she is told that the club is not accepting new members as it had reached full capacity due to which her application was rejected.' + '\n' + '\n' +
+				'Jessica is surprised because her neighbour Adela, who had applied for the same membership a week later than when Jessica applied, was offered a membership.' + '\n',
+			bot: '\n' + 'Jessica decides to-',
 			options: [
 				{
-					text: 'Argue with the club',
-					/*setState: { blueGoo: true },*/
+					text: 'Take a stand',
 					nextText: 3
 				},
 				{
@@ -138,49 +153,40 @@
 		},
 		{
 			id: 3,
-			text: 'She says' + '\n' + 'Unless with special measure or fall within any of the relevant exemptions,it is against the law for a club to discriminate against an applicant for club membership based on their personal characteristic.',
+			head: 'SCENARIO 1',
+			text: '\n' + 'She says,' + '\n' + 'Unless with special measures that comes under any of the relevant exemptions, it is against the law for a club to discriminate applicants for memberships based on their personal choices and characteristics.' + '\n' + '\n' +
+				'Discrimination against an applicant includes - ' + '\n' +
+				'	1.' + ' Rejecting applicants based on their sexual orientations' + '\n' +
+				'	2.' + ' Setting inequal terms of memberships based on Gender, for example, offering full term memberships to men only' + '\n' +
+				'	3.' + ' Demanding a character reference for applicants based on Gender' + '\n' + '\n' +
+				"The club's refusal to accept Jessica's membership application is likely to fall under the above clauses and would amount to unlawful direct discrimination on the basis of personal characteristics." + '\n' + '\n',
+			bot: "As a result, Jessica's application was accepted and they became members of the club",
 			options: [
 				{
 					text: 'To Scenario 2',
-					//            requiredState: (currentState) => currentState.blueGoo,
-					//            setState: { blueGoo: false, sword: true },
 					            nextText: 5
 				}
-				//        {
-				//            text: 'Trade the goo for a shield',
-				//            requiredState: (currentState) => currentState.blueGoo,
-				//            setState: { blueGoo: false, shield: true },
-				//            nextText: 3
-				//        },
-				//        {
-				//            text: 'Ignore the merchant',
-				//            nextText: 3
-				//        }
 			]
 		},
 		{
 			id: 4,
-			text: 'Jessica and Katherine could not join the club',
+			head: 'SCENARIO 1',
+			text: '',
+			bot: '\n' + 'Jessica and Katherine could not join the club',
 			options: [
 				{
 					text: 'Back to scenario 1',
 					            nextText: 2
 				}
-    //        {
-    //            text: 'Find a room to sleep at in the town',
-    //            nextText: 5
-    //        },
-    //        {
-    //            text: 'Find some hay in a stable to sleep in',
-    //            nextText: 6
-    //        }
         ]
 		},
 		{
-		    id: 5,
-			text: 'Scenario 2' + '\n' + 'Jessica enjoys sports and often attends the activities and events held by the clubs. Recently, she received an email saying that the club is currently offering a lifetime membership options to their current club members, which will have a discount on the membership fee. Jessica, along with her friend Alex decide to apply for the lifetime membership. Jessica’s application was rejected unfortunately due to the limited capacity. However, several days later, Jessica finds that Alex got the lifetime membership. Jessica decides to',
-		    options: [
-		        {
+			id: 5,
+			head: 'SCENARIO 2',
+			text: '\n' + 'Jessica enjoys sports and often attends the activities and events held by the clubs. Recently, she received an email saying that the club is currently offering a lifetime membership options to their current club members, which will have a discount on the membership fee. Jessica, along with her friend Alex decide to apply for the lifetime membership. Jessica’s application was rejected unfortunately due to the limited capacity. However, several days later, Jessica finds that Alex got the lifetime membership. Jessica decides to',
+			bot: '',
+			options: [
+				{
 		            text: 'Argue with the club',
 		            nextText: 6
 				},
@@ -191,9 +197,11 @@
 		    ]
 		},
 		{
-		    id: 6,
-			text: 'She says' + '\n' + 'Unless with special measure or fall within any of the relevant exemptions, it is against the law for a club to discriminate against a club member based on their personal characteristic:',
-		    options: [
+			id: 6,
+			head: 'SCENARIO 2',
+			text: '\n' + 'She says,' + '\n' + 'Unless with special measure or fall within any of the relevant exemptions, it is against the law for a club to discriminate against a club member based on their personal characteristic:',
+			bot: '',
+			options: [
 		        {
 		            text: 'To Scenario 3',
 		            nextText: 8
@@ -201,9 +209,11 @@
 		    ]
 		},
 		{
-		    id: 7,
-		    text: 'Jessica did not get a lifetime membership. She has to pay $20 extra than what Alex is paying',
-		    options: [
+			id: 7,
+			head: 'SCENARIO 2',
+			text: '\n' + 'Jessica did not get a lifetime membership. She has to pay $20 extra than what Alex is paying',
+			bot: '',
+			options: [
 		        {
 		            text: 'Back to Scenario 2',
 		            nextText: 5
@@ -211,9 +221,11 @@
 		    ]
 		},
 		{
-		    id: 8,
-			text: 'Scenario 3' + '\n' + 'Jessica has stored some equipment belong to her and Katherine in the storage room of the sports club. Recently, when she gets her stuff, she can hear the unfriendly verbal from other peers. Last week, another member in the clubs says: “your partner and youyou and your wife are not welcomed by the club.” , and there is no stuff show up to stop it. Jessica decides to',
-		    options: [
+			id: 8,
+			head: 'SCENARIO 3',
+			text: '\n' + 'Jessica has stored some equipment belong to her and Katherine in the storage room of the sports club. Recently, when she gets her stuff, she can hear the unfriendly verbal from other peers. Last week, another member in the clubs says: “your partner and youyou and your wife are not welcomed by the club.” , and there is no stuff show up to stop it. Jessica decides to',
+			bot: '',
+			options: [
 		        {
 		            text: 'Take a stand',
 		            nextText: 9
@@ -226,7 +238,9 @@
 		},
 		{
 			id: 9,
-			text: 'She says' + '\n' + 'Every Victorian has the right to equal and effective protection against discrimination, and to enjoy their human rights without discrimination. When participating in sports, it is against the law for someone be treated unfairly or be bullied because of a personal characteristic. The member should apologize for the verbal discrimination, or she will make the complaint about the discrimination.',
+			head: 'SCENARIO 3',
+			text: '\n' + 'She says' + '\n' + 'Every Victorian has the right to equal and effective protection against discrimination, and to enjoy their human rights without discrimination. When participating in sports, it is against the law for someone be treated unfairly or be bullied because of a personal characteristic. The member should apologize for the verbal discrimination, or she will make the complaint about the discrimination.',
+			bot: '',
 			options: [
 				{
 					text: 'To Scenario 4',
@@ -235,9 +249,11 @@
 			]
 		},
 		{
-		    id: 10,
-			text: 'Jessica and Katherine are discriminated against every time they meet the member.',
-		    options: [
+			id: 10,
+			head: 'SCENARIO 3',
+			text: '\n' + 'Jessica and Katherine are discriminated against every time they meet the member.',
+			bot: '',
+			options: [
 		        {
 		            text: 'Back to Scenario 3',
 		            nextText: 8
@@ -246,7 +262,9 @@
 		},
 		{
 			id: 11,
-			text: 'Scenario 4' + '\n' + 'Jessica doesn not give up and decides to file a complaint to the club.She finds the club manager and describes the situation.However, the club manager says this is a personal question and there is nothing they can do about it',
+			head: 'SCENARIO 4',
+			text: '\n' + 'Jessica doesn not give up and decides to file a complaint to the club.She finds the club manager and describes the situation.However, the club manager says this is a personal question and there is nothing they can do about it',
+			bot: '',
 			options: [
 				{
 					text: 'Take a stand',
@@ -260,7 +278,9 @@
 		},
 		{
 			id: 12,
-			text: 'She says' + '\n' + 'Clubs have a legal responsibility to make sure that all members, staff and everyone who uses their services are treated fairly and with respect. They have a positive duty to eliminate discrimination, sexual harassment, and victimisation as far as possible',
+			head: 'SCENARIO 4',
+			text: '\n' + 'She says,' + '\n' + 'Clubs have a legal responsibility to make sure that all members, staff and everyone who uses their services are treated fairly and with respect. They have a positive duty to eliminate discrimination, sexual harassment, and victimisation as far as possible',
+			bot: '',
 			options: [
 				{
 					text: 'To Scenario 5',
@@ -270,7 +290,9 @@
 		},		
 		{
 			id: 13,
-			text: 'Jessica and Katherine are discriminated against every time they meet the member.',
+			head: 'SCENARIO 4',
+			text: '\n' + 'Jessica and Katherine are discriminated against every time they meet the member.',
+			bot: '',
 			options: [
 				{
 					text: 'Back to Scenario 4',
@@ -280,7 +302,9 @@
 		},
 		{
 			id: 14,
-			text: 'Scenario 5' + '\n' + 'Jessica decides to seek the help from Victorian Equal Opportunity and Human Rights Commission through:',
+			head: 'SCENARIO 5',
+			text: '\n' + 'Jessica decides to seek the help from Victorian Equal Opportunity and Human Rights Commission through:',
+			bot: '',
 			options: [
 				{
 					text: 'Call them',
@@ -302,7 +326,9 @@
 		},
 		{
 			id: 15,
-			text: 'They provide a free phone service that provides information about discrimination, victimisation, and equal opportunity and human rights in Victoria. Call on weekdays from 10am to 3pm' + '\n' + 'Call 1300 292 153',
+			head: 'SCENARIO 5',
+			text: '\n' + 'They provide a free phone service that provides information about discrimination, victimisation, and equal opportunity and human rights in Victoria. Call on weekdays from 10am to 3pm' + '\n' + 'Call 1300 292 153',
+			bot: '',
 			options: [
 				{
 					text: 'Back',
@@ -312,7 +338,9 @@
 		},
 		{
 			id: 16,
-			text: 'Send them an email with issues and they will get back to you as soon as they can to provide information about rights under Victorian law.' + '\n' + 'Email them at enquiries@veohrc.vic.gov.au',
+			head: 'SCENARIO 5',
+			text: '\n' + 'Send them an email with issues and they will get back to you as soon as they can to provide information about rights under Victorian law.' + '\n' + 'Email them at enquiries@veohrc.vic.gov.au',
+			bot: '',
 			options: [
 				{
 					text: 'Back',
@@ -322,7 +350,9 @@
 		},
 		{
 			id: 17,
-			text: 'Your personal information will be used and stored in accordance with the Privacy and Data Protection Act 2014 (Vic). If they cannot provide our dispute resolution service to you, they will give you information about other organisations or services that might be able to help.' + '\n' + 'https://webforms.humanrights.vic.gov.au/prd?entitytype=Case&layoutcode=ComplaintWebForm&Refresh=True',
+			head: 'SCENARIO 5',
+			text: '\n' + 'Your personal information will be used and stored in accordance with the Privacy and Data Protection Act 2014 (Vic). If they cannot provide our dispute resolution service to you, they will give you information about other organisations or services that might be able to help.' + '\n' + 'https://webforms.humanrights.vic.gov.au/prd?entitytype=Case&layoutcode=ComplaintWebForm&Refresh=True',
+			bot: '',
 			options: [
 				{
 					text: 'Back',
@@ -332,7 +362,9 @@
 		},
 		{
 			id: 18,
-			text: 'If you want to tell them about your experience, but you do not want to make a formal complaint, you can make a report to them using our Community Reporting Tool.' + '\n' + 'https://www.humanrights.vic.gov.au/get-help/community-reporting-tool/',
+			head: 'SCENARIO 5',
+			text: '\n' + 'If you want to tell them about your experience, but you do not want to make a formal complaint, you can make a report to them using our Community Reporting Tool.' + '\n' + 'https://www.humanrights.vic.gov.au/get-help/community-reporting-tool/',
+			bot: '',
 			options: [
 				{
 					text: 'Back',
