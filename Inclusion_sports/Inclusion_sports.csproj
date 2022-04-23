@@ -1239,7 +1239,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Portfolio.cshtml" />
     <Content Include="rs-plugin\.DS_Store" />
     <Content Include="rs-plugin\assets\arrows.psd" />
     <Content Include="rs-plugin\assets\bullets.psd" />

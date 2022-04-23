@@ -36,7 +36,7 @@
 		margin-top: 20px;
 	}
 
-	.btn {
+	#btnjs {
 		background-color: hsl(200, 100%, 50%);
 		border: 1px solid hsl(200, 100%, 30%);
 		border-radius: 5px;
@@ -45,22 +45,50 @@
 		outline: none;
 	}
 
-		.btn:hover {
-			border-color: black;
-		}
+	.btn:hover {
+		border-color: black;
+	}
 
+	.jumbotron .title h4 {
+		font-family: 'Montserrat', sans-serif;
+		text-align: center;
+	}
+
+
+	.jumbotron .title p {
+		font-family: 'Montserrat', sans-serif;
+		text-align: center;
+	}
+
+	.jumbotron p {
+		font-size: 20px;
+	}
 </style>
 
+<section class="sectoion-100px knowrights">
+	<div class="jumbotron">
+		<div class="title">
+			<h4>WHAT DO YOU WANT TO DO TODAY?</h4>
+			<div class="col-md-6">
+				<p>Read through a few scenarios to know more about your rights in Sports</p>
+				<p><a class="btn btn-default" href='#.'>Know your rights &raquo;</a></p>
+			</div>
+			<div class="col-md-6">
+				<p>Report an incident or tell us how you feel</p>
+				<p><a class="btn btn-default" href='@Url.Action("Create", "Reporting")'>Report Incident &raquo;</a></p>
+			</div>
+		</div>
+	</div>
+</section>
 
 <div class="container" id="gamec">
 	<div id="heading"><h3>Text</h3></div>
 	<div id="text">Text</div>
 	<div id="bot">Text</div>
 	<div id="option-buttons" class="btn-grid">
-		<button class="btn">Option 1</button>
-		<button class="btn">Option 2</button>
-		<button class="btn">Option 3</button>
-		<button class="btn">Option 4</button>
+		<button class="btn" id="btnjs">Option 2</button>
+		<button class="btn" id="btnjs">Option 3</button>
+		<button class="btn" id="btnjs">Option 4</button>
 	</div>
 </div>
 
