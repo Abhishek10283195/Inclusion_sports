@@ -143,6 +143,10 @@
     <Content Include="App_Data\Maps_log.ldf">
       <DependentUpon>Maps.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Reporting.mdf" />
+    <Content Include="App_Data\Reporting_log.ldf">
+      <DependentUpon>Reporting.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -471,7 +475,20 @@
       <DependentUpon>Maps.edmx</DependentUpon>
       <LastGenOutput>Maps.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Reporting.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Reporting.edmx</DependentUpon>
+      <LastGenOutput>Reporting.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Reporting.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Reporting.edmx</DependentUpon>
+      <LastGenOutput>Reporting1.cs</LastGenOutput>
+    </Content>
     <Content Include="php\submit.php" />
+    <Content Include="report\css\style.css" />
+    <Content Include="report\images\bg2.jpg" />
+    <Content Include="report\index.html" />
     <Content Include="rs-plugin\assets\arrowleft.png" />
     <Content Include="rs-plugin\assets\arrowright.png" />
     <Content Include="rs-plugin\assets\arrow_large_left.png" />
@@ -981,6 +998,13 @@
     <Content Include="Models\Maps.edmx.diagram">
       <DependentUpon>Maps.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Reporting.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Reporting.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Reporting.edmx.diagram">
+      <DependentUpon>Reporting.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_be.html" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_cn.html" />
@@ -1106,6 +1130,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="Controllers\RightsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1145,6 +1170,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Maps.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reporting.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporting.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reporting.cs">
+      <DependentUpon>Reporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reporting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporting.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reporting1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1217,6 +1260,8 @@
     <Content Include="Views\Maps\Edit.cshtml" />
     <Content Include="Views\Maps\Index.cshtml" />
     <Content Include="Views\Rights\Index.cshtml" />
+    <Content Include="Views\Reporting\Create.cshtml" />
+    <Content Include="Views\Reporting\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

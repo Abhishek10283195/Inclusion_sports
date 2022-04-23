@@ -1,0 +1,38 @@
+﻿@model Inclusion_sports.Models.Reporting
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_MyLayoutPage.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>REPORT AN INCIDENT</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Elegant Feedback Form  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom-theme -->
+<link href="~/report/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body class="agileits_w3layouts">
+	<h1 class="agile_head text-center">REPORT AN INCIDENT</h1>
+	<div class="w3layouts_main wrap">
+		<h3>Tell us about your situation. Tell us about what you went through </h3>
+		@using (Html.BeginForm("Create", "Reporting", FormMethod.Post, new { @class = "agile_form" }))
+		{
+			<h2>We are here to help...</h2>
+			@Html.TextAreaFor(m => m.Answer, new { @class = "w3l_summary", @placeholder = "Start typing here" })
+			@Html.TextBoxFor(m => m.Name, new { @placeholder = "Your Name" })
+			@Html.TextBoxFor(m => m.Email, new { @placeholder = "Your Email" })
+			<input type="submit" value="send" class="agileinfo" />
+		}
+	</div>
+
+</body>
+</html>
+
