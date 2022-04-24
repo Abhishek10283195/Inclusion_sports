@@ -16,7 +16,7 @@
 	.main-header .logo {
 		margin: 20px 0px;
 		/*	float: left;*/
-	display: inline;
+		display: inline;
 		font-family: 'Montserrat', sans-serif;
 	}
 
@@ -29,21 +29,25 @@
 		margin-bottom: 5px;
 	}
 
-		.main-header .logo:after {
-			background-color: #c50000;
-			content: '';
-			display: block;
-			position: relative;
-			left: 145px;
-			bottom: 0;
-			height: 3px;
-			width: 100px;
-			margin-bottom: 0.25em;
-		}
+	.main-header .logo:after {
+		background-color: #c50000;
+		content: '';
+		display: block;
+		position: relative;
+		left: 145px;
+		bottom: 0;
+		height: 3px;
+		width: 100px;
+		margin-bottom: 0.25em;
+	}
 
 
 	.main-header {
 		padding-bottom: 0px;
+		position: fixed; /* Set the navbar to fixed position */
+		top: 0; /* Position the navbar at the top of the page */
+		width: 100%; /* Full width */
+		background: rgb(255 255 255);
 	}
 
 		.main-header .container {
@@ -63,6 +67,8 @@
 		position: fixed;
 		z-index: 2;
 	}
+
+
 </style>
 <!DOCTYPE html>
 <html>
@@ -78,7 +84,7 @@
 	<link href="~/css/animate.css" rel="stylesheet" />
 	@*@Styles.Render("~/Content/css")*@
 	@*<link href="~/css/Header.css" rel="stylesheet" />*@
-	<link href="~/css/Footer.css" rel="stylesheet" />
+	@*<link href="~/css/Footer.css" rel="stylesheet" />*@
 	<link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
 	@* This is for the mapbox map. *@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
@@ -114,66 +120,66 @@
 	<script src="~/js/own-menu.js"></script>
 </head>
 <body>
-	@*<div id="wrap">
-		<div id="main-wrapper">
-			<header class="main-header">
-				<div class="container-fuild">
-					<div class="logo"> <a href="#."> <img src="~/images/project_logo.png" alt="Inclusion through Sports"></a> </div>*@
-	<div id="wrap" class="no-padding">
-		<div id="main-wrapper">
-			<header class="main-header">
-				<div class="container col-md-12">
-					<div class="logo"><h4>Pride Melb<strong>Sports.</strong></h4></div>
-					<!-- Nav -->
-					<nav>
-						<ul id="ownmenu" class="ownmenu">
-							<li>@Html.ActionLink("Know your rights", "Index", "Rights")</li>
-							<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
-							<li>@Html.ActionLink("Events", "Index", "Events")</li>
-							<li>@Html.ActionLink("Home", "Index", "Home")</li>
-						</ul>
-					</nav>
-				</div>
-			</header>
-		</div>
-	</div>
-	<div>
-		@RenderBody()
-	</div>
-	@*<footer class="footer-section">
-		<div class="container">
-			<div class="footer-content pt-5 pb-5">
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-widget">
-							<div class="footer-logo">
-								<img src="~/images/logo_ver2.png" class="img-fluid" alt="logo">
-							</div>
-							<div class="footer-text">
-								<h3>PRIDE MELB<strong>SPORTS.</strong></h3>
-							</div>
+
+
+
+			<div id="wrap" class="no-padding">
+				<div id="main-wrapper">
+					<header class="main-header">
+						<div class="container col-md-12">
+							<div class="logo"><h4>Pride Melb<strong>Sports.</strong></h4></div>
+			<nav>
+								<ul id="ownmenu" class="ownmenu">
+									<li>@Html.ActionLink("Know your rights", "Index", "Rights")</li>
+									<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
+									<li>@Html.ActionLink("Events", "Index", "Events")</li>
+									<li>@Html.ActionLink("Home", "Index", "Home")</li>
+								</ul>
+							</nav>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-widget">
-							<div class="footer-widget-heading">
-								<h3>Useful Links</h3>
-							</div>
-							<ul>
-								<li>@Html.ActionLink("Home", "Index", "Home")</li>
-								<li><a href="#services">Services</a></li>
-								<li><a href="#about">About Us</a></li>
-								<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
-								<li>@Html.ActionLink("Events", "Index", "Events")</li>
-							</ul>
-						</div>
-					</div>
+					</header>
 				</div>
 			</div>
-		</div>
-	</footer>*@
-	<script src="~/js/jquery-1.11.3.min.js"></script>
-	<script src="~/js/bootstrap.min.js"></script>
-	@RenderSection("Scripts", false)
+
+
+
+			<div>
+				@RenderBody()
+			</div>
+			@*<footer class="footer-section">
+					<div class="container">
+						<div class="footer-content pt-5 pb-5">
+							<div class="row">
+								<div class="col-lg-3 col-md-6">
+									<div class="footer-widget">
+										<div class="footer-logo">
+											<img src="~/images/logo_ver2.png" class="img-fluid" alt="logo">
+										</div>
+										<div class="footer-text">
+											<h3>PRIDE MELB<strong>SPORTS.</strong></h3>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="footer-widget">
+										<div class="footer-widget-heading">
+											<h3>Useful Links</h3>
+										</div>
+										<ul>
+											<li>@Html.ActionLink("Home", "Index", "Home")</li>
+											<li><a href="#services">Services</a></li>
+											<li><a href="#about">About Us</a></li>
+											<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
+											<li>@Html.ActionLink("Events", "Index", "Events")</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>*@
+			<script src="~/js/jquery-1.11.3.min.js"></script>
+			<script src="~/js/bootstrap.min.js"></script>
+			@RenderSection("Scripts", false)
 </body>
 </html>

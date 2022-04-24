@@ -8,9 +8,30 @@
 	#MapDiv {
 		position: center;
 	}
+	.jumbotron {
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+	}
+	.viewHeader {
+		top:100px;
+	}
+	.map .toggle-buttons {
+		left:50px;
+	}
+	.map {
+		top:50px;
+	}
 
-	.filter-wrapper .filter-checkbox {
+	.tableheader {
+		top: 140px;
+	}
+	.thistable {
+		top:180px;
+	}
+
+	.filter-wrapper {
 		margin-left: 50px;
+		left: 50px;
 	}
 
 	.filter-wrapper label {
@@ -74,85 +95,101 @@
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+	@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">*@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
 </head>
-<div class="container">
-	<div class="content">
-		<div class="row">
-			<div class="col-8">
-				<div class="filter-wrapper">
-					<input id="cbox1" type="checkbox" class="filter-checkbox" value="LGBT" />
-					<label for="cbox1">LGBT</label>
-					<input id="cbox2 " type="checkbox" class="filter-checkbox" value="General" />
-					<label for="cbox2">General</label>
-					<button id="tbl">Table view</button>
-					<button id="mp">Map View</button>
+
+<section class="viewHeader">
+	<div class="jumbotron">
+		<div class="title">
+			<h4>FIND SPORTS CLUBS AROUND YOU</h4>
+			<p>Search for a postcode or the type of sports you prefer from the tabel</p>
+			<p>Search for LGBT exclusive clubs from the table or the map</p>
+			<p>Switch between Table view and Map view</p>
+			<button class="btn btn-default" id="tbl">Table view</button>
+			<button class="btn btn-default" id="mp">Map View</button>
+		</div>
+	</div>
+</section>
+
+
+<section class="tableheader">
+	<div id="allitems">
+		<div class="content">
+			<div class="row">
+				<div class="col-8">
+					<div class="filter-wrapper">
+						<p>Filter LGBT exclusive clubs</p>
+						<input id="cbox1" type="checkbox" class="filter-checkbox" value="LGBT" />
+						<label id="filterLabel1" for="cbox1">LGBT</label>
+						
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 <div>
-
-			<table class="table" id="thistable" style="display:none">
-				<thead>
-					<tr>
-						<th>
-							@Html.DisplayNameFor(model => model.Name)
-						</th>
-						<th>
-							@Html.DisplayNameFor(model => model.Address)
-						</th>
-						<th>
-							@Html.DisplayNameFor(model => model.Sports)
-						</th>
-						<th>
-							@Html.DisplayNameFor(model => model.Diversity)
-						</th>
-						<th></th>
+	<section class="thistable">
+		<table class="table" id="thistable">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.Name)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Address)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Sports)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Diversity)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr class="coordinates">
+						<td class="name">
+							@Html.DisplayFor(modelItem => item.Name)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Address)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Sports)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Diversity)
+						</td>
+						<td>
+							@Html.ActionLink("Details", "Details", new { id = item.Id })
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					@foreach (var item in Model)
-					{
-						<tr class="coordinates">
-							<td class="name">
-								@Html.DisplayFor(modelItem => item.Name)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Address) 
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Sports)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Diversity)
-							</td>
-							<td>
-								@Html.ActionLink("Details", "Details", new { id = item.Id })
-							</td>
-						</tr>
-					}
-				</tbody>
-			</table>
+				}
+			</tbody>
+		</table>
+	</section>
+	<section class="map">
+		<div class="toggle-buttons" style="display:none">
 
-		<div id="buttons">
-
-			<input type="checkbox" name="filter" id="LGBT" class='chk-btn' style="display:none">
+			<input type="checkbox" name="filter" id="LGBT" class='chk-btn'>
 			<label for='LGBT'>LGBT</label>
 
-			<input type="checkbox" name="filter" id="General" class='chk-btn' style="display:none">
+			<input type="checkbox" name="filter" id="General" class='chk-btn'>
 			<label for='General'>General</label>
 
-			<input type="checkbox" name="filter" id="clear" class='chk-btn' style="display:none">
+			<input type="checkbox" name="filter" id="clear" class='chk-btn'>
 			<label for='clear'>Clear Filters</label>
 			<br>
 		</div>
 		<br>
-		<div id="MapDiv" style="display:none; width: 500px; height: 500px"></div>
-
+		<div id="MapDiv" style="display:none; width:stretch; height: 500px"></div>
+	</section>
 </div>
 @section Scripts {
 	@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
@@ -185,11 +222,19 @@
 		$(document).ready(function () {
 			$("#mp").click(function () {
 				$("#MapDiv").toggle();
+				$(".toggle-buttons").show();
 				$("#thistable").hide();
+				$(".filter-checkbox").hide();
+				$("#filterLabel1").hide();
+				$("#filterLabel2").hide();
 			});
 			$("#tbl").click(function () {
 				$("#thistable").toggle();
 				$("#MapDiv").hide();
+				$(".toggle-buttons").hide();
+				$(".filter-checkbox").show();
+				$("#filterLabel1").show();
+				$("#filterLabel2").show();
 			});
 		});
 	</script>
