@@ -1,0 +1,135 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/_MyLayoutPage.cshtml";
+}
+
+
+
+@*<h2>Index</h2>
+	<h4>Add Users via Excel</h4>
+		<hr />
+		@using (Html.BeginForm("UploadExcel", "TrustHeteros", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
+		{
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="control-label col-md-2">Download Format:</div>
+					<div class="col-md-10">
+						<a href="/User/DownloadExcel/"><img src="~/excel.ico" width="25" height="25" title="Download Excel format" alt="excel" /></a>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="control-label col-md-2">Excel:</div>
+					<div class="col-md-10">
+						<input type="file" id="FileUpload" name="FileUpload" class="" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+					</div>
+				</div>
+			</div>
+		}*@
+@*<p>
+		@Html.ActionLink("Create New", "Create")
+	</p>
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Type)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Degree)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Percentage)
+			</th>
+			<th></th>
+		</tr>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Type)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Degree)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Percentage)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+				</td>
+			</tr>
+		}
+
+	</table>*@
+	
+<section id="charts" style="top:100px">
+	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+</section>
+
+
+@section Scripts {
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script  type="text/javascript">
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Product Market Share",
+		fontColor: "#322D31"
+	},
+	axisY: {
+		suffix: "%",
+		interval: 20
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "stackedBar100",
+		name: "Product 1",
+		showInLegend: true,
+		color: "#7E7D9C",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints1),
+		indexLabelFontColor: "#F4F6F5"
+	},
+	{
+		type: "stackedBar100",
+		name: "Product 2",
+		showInLegend: true,
+		color: "#ADADC7",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints2),
+		indexLabelFontColor: "#F4F6F5"
+	},
+	{
+		type: "stackedBar100",
+		name: "Product 3",
+		showInLegend: true,
+		color: "#9897A9",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints3),
+		indexLabelFontColor: "#F4F6F5"
+	}]
+});
+chart.render();
+
+}
+	</script>
+}
+

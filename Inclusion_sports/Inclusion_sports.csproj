@@ -79,6 +79,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -135,6 +136,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Epic3.mdf" />
+    <Content Include="App_Data\Epic3_log.ldf">
+      <DependentUpon>Epic3.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Events.mdf" />
     <Content Include="App_Data\Events_log.ldf">
       <DependentUpon>Events.mdf</DependentUpon>
@@ -484,6 +489,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Reporting.edmx</DependentUpon>
       <LastGenOutput>Reporting1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Trust.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Trust.edmx</DependentUpon>
+      <LastGenOutput>Trust.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Trust.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Trust.edmx</DependentUpon>
+      <LastGenOutput>Trust.cs</LastGenOutput>
     </Content>
     <Content Include="php\submit.php" />
     <Content Include="report\css\style.css" />
@@ -1005,6 +1020,13 @@
     <Content Include="Models\Reporting.edmx.diagram">
       <DependentUpon>Reporting.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Trust.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Trust.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Trust.edmx.diagram">
+      <DependentUpon>Trust.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_be.html" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_cn.html" />
@@ -1132,6 +1154,7 @@
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="Controllers\RightsController.cs" />
+    <Compile Include="Controllers\TrustHeterosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1188,6 +1211,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trust.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trust.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trust.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trust.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trust.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrustHetero.cs">
+      <DependentUpon>Trust.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrustHomo.cs">
+      <DependentUpon>Trust.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1261,6 +1305,11 @@
     <Content Include="Views\Rights\Index.cshtml" />
     <Content Include="Views\Reporting\Create.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
+    <Content Include="Views\TrustHeteros\Create.cshtml" />
+    <Content Include="Views\TrustHeteros\Delete.cshtml" />
+    <Content Include="Views\TrustHeteros\Details.cshtml" />
+    <Content Include="Views\TrustHeteros\Edit.cshtml" />
+    <Content Include="Views\TrustHeteros\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

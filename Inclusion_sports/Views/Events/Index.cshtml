@@ -192,13 +192,15 @@
 
 							description: v.Content,
 
+							eventtype: v.Event_type,
+
 							location : v.Location,
 
 							start: moment(v.Start_time),
 
 							end: moment(v.End_time),
 
-							id: v.Id,
+							id: v.Id,							
 
 							link: v.Link
 
@@ -266,12 +268,12 @@
 
 						$description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
 
+						$description.append($('<p/>').html('<b>Event Type: </b>' + calEvent.eventtype));
+
 						$description.append($('<p/>').html('<b>Location: </b>' + calEvent.location));
 
-						let anchor = document.createElement('a');
-						anchor.href = calEvent.link;
 
-						$description.append($('<p/>').html('<b>Link: </b>' + anchor));
+						$description.append($('<p/>').html('<b>Link: </b>' + '<a href=' + calEvent.link + '>' + calEvent.link + '</a>'));
 
 						$('#myModal #pDetails').empty().html($description);
 
