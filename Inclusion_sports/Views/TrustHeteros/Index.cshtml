@@ -4,7 +4,12 @@
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 
-
+<style>
+	.jumbotron {
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+	}
+</style>
 
 @*<h2>Index</h2>
 	<h4>Add Users via Excel</h4>
@@ -69,15 +74,42 @@
 		}
 
 	</table>*@
-	
-<section id="charts" style="top:100px">
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+
+<section class="viewHeader", style="top: 100px;">
+	<div class="jumbotron">
+		<div class="title">
+			@*<h4>FIND SPORTS CLUBS AROUND YOU</h4>
+			<p>Search for a postcode or the type of sports you prefer from the tabel</p>
+			<p>Search for LGBT exclusive clubs from the table or the map</p>
+			<p>Switch between Table view and Map view</p>*@
+			<button class="btn btn-default" id="ht">Heterosexual group</button>
+			<button class="btn btn-default" id="hm">Homosexual group</button>
+		</div>
+	</div>
 </section>
 
+<section id="charts" style="top:100px">
+		<div class="col-lg-12 col-md-12" id="chartContainer" style="height: 400px;"></div>
+
+		<div class="col-lg-12 col-md-12" id="chartContainer2" style="height: 400px; visibility:hidden"></div>
+</section>
 
 @section Scripts {
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script  type="text/javascript">
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			$("#ht").click(function () {
+				$("#chartContainer").show();
+				document.getElementById("chartContainer2").style.visibility = "hidden";
+			});
+			$("#hm").click(function () {
+				$("#chartContainer").hide();
+				document.getElementById("chartContainer2").style.visibility = "visible";
+			});
+		});
+
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
@@ -128,6 +160,55 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 chart.render();
+
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	title: {
+		text: "Trust Levels - Homosexual group",
+		fontColor: "#322D31"
+	},
+	axisY: {
+		suffix: "%",
+		interval: 20
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "stackedBar100",
+		name: "Strongly agree / Somewhat agree",
+		showInLegend: true,
+		color: "#7E7D9C",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints4),
+		indexLabelFontColor: "#F4F6F5"
+	},
+	{
+		type: "stackedBar100",
+		name: "Neither agree nor disagree",
+		showInLegend: true,
+		color: "#ADADC7",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints5),
+		indexLabelFontColor: "#F4F6F5"
+	},
+	{
+		type: "stackedBar100",
+		name: "Somewhat disagree / Strongly disagree",
+		showInLegend: true,
+		color: "#9897A9",
+		yValueFormatString: "#,##0\"%\"",
+		indexLabel: "{y}",
+		indexLabelFontSize: 17,
+		dataPoints: @Html.Raw(ViewBag.DataPoints6),
+		indexLabelFontColor: "#F4F6F5"
+	}]
+});
+chart2.render();
 
 }
 	</script>

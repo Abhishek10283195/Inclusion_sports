@@ -21,6 +21,7 @@ namespace Inclusion_sports.Controllers
     {
         private Epic3Entities1 db = new Epic3Entities1();
 
+
         // GET: TrustHeteros
         public ActionResult Index()
         {
@@ -30,24 +31,21 @@ namespace Inclusion_sports.Controllers
             var Percentage = (from values in db.TrustHeteroes
                           select values.Percentage).ToArray();
 
+            var myType2 = (from values in db.TrustHomoes
+                           select values.Type).ToArray();
+            var Percentage2 = (from values in db.TrustHomoes
+                              select values.Percentage).ToArray();
+
             List<DataPoint> dataPoints1 = new List<DataPoint>();
             List<DataPoint> dataPoints2 = new List<DataPoint>();
             List<DataPoint> dataPoints3 = new List<DataPoint>();
 
 
-            //string cs = ConfigurationManager.ConnectionStrings["Epic3Entities1"].ConnectionString;
-            //using (SqlConnection con = new SqlConnection(cs))
-            //{
-            //             string cmd = "Select Type, Percentage from TrustHetero";
-            //	con.Open();
-            //             DataTable dt = new DataTable();
-            //             SqlDataAdapter rdr = new SqlDataAdapter(cmd, con);
-            //             rdr.Fill(dt);
-            //             con.Close();
+            List<DataPoint> dataPoints4 = new List<DataPoint>();
+            List<DataPoint> dataPoints5 = new List<DataPoint>();
+            List<DataPoint> dataPoints6 = new List<DataPoint>();
 
-            //             dataPoints1.Add(new DataPoint(Convert.ToDouble(dt.Rows[1][0]), dt.Rows[1][1]));
 
-            //         }
 
 
             dataPoints1.Add(new DataPoint(myType[0], Percentage[0]));
@@ -66,24 +64,32 @@ namespace Inclusion_sports.Controllers
             dataPoints3.Add(new DataPoint(myType[9], Percentage[11]));
 
 
-
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(4).Type), Convert.ToDouble(db.TrustHeteroes.Find(4).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(4).Type), Convert.ToDouble(db.TrustHeteroes.Find(5).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(4).Type), Convert.ToDouble(db.TrustHeteroes.Find(6).Percentage)));
-
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(7).Type), Convert.ToDouble(db.TrustHeteroes.Find(7).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(7).Type), Convert.ToDouble(db.TrustHeteroes.Find(8).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(7).Type), Convert.ToDouble(db.TrustHeteroes.Find(9).Percentage)));
-
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(10).Type), Convert.ToDouble(db.TrustHeteroes.Find(10).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(10).Type), Convert.ToDouble(db.TrustHeteroes.Find(11).Percentage)));
-            //dataPoints1.Add(new DataPoint(Convert.ToDouble(db.TrustHeteroes.Find(10).Type), Convert.ToDouble(db.TrustHeteroes.Find(12).Percentage)));
-
             ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
 			ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
 			ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
 
-			return View();
+
+            dataPoints4.Add(new DataPoint(myType2[0], Percentage2[0]));
+            dataPoints4.Add(new DataPoint(myType2[3], Percentage2[3]));
+            dataPoints4.Add(new DataPoint(myType2[6], Percentage2[6]));
+            dataPoints4.Add(new DataPoint(myType2[9], Percentage2[9]));
+
+            dataPoints5.Add(new DataPoint(myType2[0], Percentage2[1]));
+            dataPoints5.Add(new DataPoint(myType2[3], Percentage2[4]));
+            dataPoints5.Add(new DataPoint(myType2[6], Percentage2[7]));
+            dataPoints5.Add(new DataPoint(myType2[9], Percentage2[10]));
+
+            dataPoints6.Add(new DataPoint(myType2[0], Percentage2[2]));
+            dataPoints6.Add(new DataPoint(myType2[3], Percentage2[5]));
+            dataPoints6.Add(new DataPoint(myType2[6], Percentage2[8]));
+            dataPoints6.Add(new DataPoint(myType2[9], Percentage2[11]));
+
+
+            ViewBag.DataPoints4 = JsonConvert.SerializeObject(dataPoints4);
+            ViewBag.DataPoints5 = JsonConvert.SerializeObject(dataPoints5);
+            ViewBag.DataPoints6 = JsonConvert.SerializeObject(dataPoints6);
+
+            return View();
         }
 
         // GET: TrustHeteros/Details/5
@@ -191,8 +197,8 @@ namespace Inclusion_sports.Controllers
         }
         public FileResult DownloadExcel()
         {
-            string path = "~Uploads/trust_heterosexual.xlsx";
-            return File(path, "application/vnd.ms-excel", "trust_heterosexual.xlsx");
+            string path = "~Uploads/trust_homosexual.xlsx";
+            return File(path, "application/vnd.ms-excel", "trust_homosexual.xlsx");
         }
         [HttpPost]
         public JsonResult UploadExcel(Event users, HttpPostedFileBase FileUpload)
@@ -224,18 +230,18 @@ namespace Inclusion_sports.Controllers
                     DataTable dtable = ds.Tables["ExcelTable"];
                     string sheetName = "Sheet1";
                     var excelFile = new ExcelQueryFactory(pathToExcelFile);
-                    var artistAlbums = from a in excelFile.Worksheet<TrustHetero>(sheetName) select a;
+                    var artistAlbums = from a in excelFile.Worksheet<TrustHomo>(sheetName) select a;
                     foreach (var a in artistAlbums)
                     {
                         try
                         {
-                                TrustHetero TU = new TrustHetero();
+                                TrustHomo TU = new TrustHomo();
                                 TU.Degree = a.Degree;
                                 TU.Percentage = a.Percentage;
                                 TU.Type = a.Type;
 
 
-                                db.TrustHeteroes.Add(TU);
+                                db.TrustHomoes.Add(TU);
                                 db.SaveChanges();
                       
                         }
