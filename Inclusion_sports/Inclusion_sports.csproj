@@ -490,6 +490,16 @@
       <DependentUpon>Reporting.edmx</DependentUpon>
       <LastGenOutput>Reporting1.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Tobacco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tobacco.edmx</DependentUpon>
+      <LastGenOutput>Tobacco.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Tobacco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tobacco.edmx</DependentUpon>
+      <LastGenOutput>Tobacco.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Trust.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Trust.edmx</DependentUpon>
@@ -1027,6 +1037,13 @@
     <Content Include="Models\Trust.edmx.diagram">
       <DependentUpon>Trust.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Tobacco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Tobacco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Tobacco.edmx.diagram">
+      <DependentUpon>Tobacco.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_be.html" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_cn.html" />
@@ -1211,6 +1228,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tobacco.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tobacco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tobacco.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tobacco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tobacco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tobacco.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TobaccoHetero.cs">
+      <DependentUpon>Tobacco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TobaccoHomo.cs">
+      <DependentUpon>Tobacco.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Trust.Context.cs">
       <AutoGen>True</AutoGen>

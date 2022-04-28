@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Epic3Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TobaccoHetero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Y2010" Type="int" Nullable="false" />
+          <Property Name="Y2013" Type="int" Nullable="false" />
+          <Property Name="Y2016" Type="int" Nullable="false" />
+          <Property Name="Y2019" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TobaccoHomo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Y2010" Type="int" Nullable="false" />
+          <Property Name="Y2013" Type="int" Nullable="false" />
+          <Property Name="Y2016" Type="int" Nullable="false" />
+          <Property Name="Y2019" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Epic3Model1StoreContainer">
+          <EntitySet Name="TobaccoHetero" EntityType="Self.TobaccoHetero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TobaccoHomo" EntityType="Self.TobaccoHomo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Epic3Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TobaccoHetero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Y2010" Type="Int32" Nullable="false" />
+          <Property Name="Y2013" Type="Int32" Nullable="false" />
+          <Property Name="Y2016" Type="Int32" Nullable="false" />
+          <Property Name="Y2019" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TobaccoHomo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Y2010" Type="Int32" Nullable="false" />
+          <Property Name="Y2013" Type="Int32" Nullable="false" />
+          <Property Name="Y2016" Type="Int32" Nullable="false" />
+          <Property Name="Y2019" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Epic3Entities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TobaccoHeteroes" EntityType="Self.TobaccoHetero" />
+          <EntitySet Name="TobaccoHomoes" EntityType="Self.TobaccoHomo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Epic3Model1StoreContainer" CdmEntityContainer="Epic3Entities3">
+          <EntitySetMapping Name="TobaccoHeteroes">
+            <EntityTypeMapping TypeName="Epic3Model1.TobaccoHetero">
+              <MappingFragment StoreEntitySet="TobaccoHetero">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Y2010" ColumnName="Y2010" />
+                <ScalarProperty Name="Y2013" ColumnName="Y2013" />
+                <ScalarProperty Name="Y2016" ColumnName="Y2016" />
+                <ScalarProperty Name="Y2019" ColumnName="Y2019" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TobaccoHomoes">
+            <EntityTypeMapping TypeName="Epic3Model1.TobaccoHomo">
+              <MappingFragment StoreEntitySet="TobaccoHomo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Y2010" ColumnName="Y2010" />
+                <ScalarProperty Name="Y2013" ColumnName="Y2013" />
+                <ScalarProperty Name="Y2016" ColumnName="Y2016" />
+                <ScalarProperty Name="Y2019" ColumnName="Y2019" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
