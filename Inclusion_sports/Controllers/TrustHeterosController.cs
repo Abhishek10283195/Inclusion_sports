@@ -51,14 +51,14 @@ namespace Inclusion_sports.Controllers
 
 
             dataPoints1.Add(new DataPoint(myType[0], Percentage[0]));
-            dataPoints3.Add(new DataPoint(myType[3], Percentage[3]));
-            dataPoints3.Add(new DataPoint(myType[6], Percentage[6]));
-            dataPoints3.Add(new DataPoint(myType[9], Percentage[9]));
+            dataPoints1.Add(new DataPoint(myType[3], Percentage[3]));
+            dataPoints1.Add(new DataPoint(myType[6], Percentage[6]));
+            dataPoints1.Add(new DataPoint(myType[9], Percentage[9]));
 
             dataPoints2.Add(new DataPoint(myType[0], Percentage[1]));
-            dataPoints3.Add(new DataPoint(myType[3], Percentage[4]));
-            dataPoints3.Add(new DataPoint(myType[6], Percentage[7]));
-            dataPoints3.Add(new DataPoint(myType[9], Percentage[10]));
+            dataPoints2.Add(new DataPoint(myType[3], Percentage[4]));
+            dataPoints2.Add(new DataPoint(myType[6], Percentage[7]));
+            dataPoints2.Add(new DataPoint(myType[9], Percentage[10]));
 
             dataPoints3.Add(new DataPoint(myType[0], Percentage[2]));
             dataPoints3.Add(new DataPoint(myType[3], Percentage[5]));

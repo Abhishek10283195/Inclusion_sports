@@ -83,7 +83,7 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	title: {
-		text: "Product Market Share",
+		text: "Trust Levels - Heterosexual group",
 		fontColor: "#322D31"
 	},
 	axisY: {
@@ -95,7 +95,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	data: [{
 		type: "stackedBar100",
-		name: "Product 1",
+		name: "Strongly agree / Somewhat agree",
 		showInLegend: true,
 		color: "#7E7D9C",
 		yValueFormatString: "#,##0\"%\"",
@@ -106,7 +106,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	{
 		type: "stackedBar100",
-		name: "Product 2",
+		name: "Neither agree nor disagree",
 		showInLegend: true,
 		color: "#ADADC7",
 		yValueFormatString: "#,##0\"%\"",
@@ -117,7 +117,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	{
 		type: "stackedBar100",
-		name: "Product 3",
+		name: "Somewhat disagree / Strongly disagree",
 		showInLegend: true,
 		color: "#9897A9",
 		yValueFormatString: "#,##0\"%\"",
