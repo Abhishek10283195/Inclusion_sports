@@ -7,6 +7,7 @@
       <Diagram DiagramId="f356db9244594a7d89c18dbd1a74555b" Name="Diagram1">
         <EntityTypeShape EntityType="Epic3Model1.TobaccoHetero" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Epic3Model1.TobaccoHomo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Epic3Model1.tblFile" Width="1.5" PointX="5.125" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

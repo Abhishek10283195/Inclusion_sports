@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -233,8 +234,36 @@ namespace Inclusion_sports.Controllers
             return View();
         }
 
-        // GET: TrustHeteros/Details/5
-        public ActionResult Details(int? id)
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase postedFile)
+        {
+            byte[] bytes;
+            using (BinaryReader br = new BinaryReader(postedFile.InputStream))
+            {
+                bytes = br.ReadBytes(postedFile.ContentLength);
+            }
+
+            db2.tblFiles.Add(new tblFile
+            {
+                Name = Path.GetFileName(postedFile.FileName),
+                ContentType = postedFile.ContentType,
+                Data = bytes
+            });
+            db2.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public FileResult DownloadFile(int? fileId)
+        {
+            tblFile file = db2.tblFiles.ToList().Find(p => p.Id == fileId.Value);
+            return File(file.Data, file.ContentType, file.Name);
+        }
+    
+
+
+    // GET: TrustHeteros/Details/5
+    public ActionResult Details(int? id)
         {
             if (id == null)
             {

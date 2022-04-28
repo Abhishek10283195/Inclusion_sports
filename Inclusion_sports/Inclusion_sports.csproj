@@ -1229,6 +1229,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporting.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblFile.cs">
+      <DependentUpon>Tobacco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tobacco.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

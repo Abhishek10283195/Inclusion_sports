@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Inclusion_sports.Models.TobaccoHomo>
+﻿@model IEnumerable<Inclusion_sports.Models.tblFile>
 @{
 	ViewBag.Title = "Index";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
@@ -35,17 +35,42 @@
 					</div>
 				</div>
 			</div>
-		}*@
+		}
+
+//For video upload. Do not unncomment this for now @Xuancheng
+@using (Html.BeginForm("Index", "TrustHeteros", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	<input type="file" name="postedFile" />
+	<input type="submit" id="btnUpload" value="Upload" />
+}
+<hr />*@
+@*<table cellpadding="0" cellspacing="0">
+	@if (Model.Count() > 0)
+	{
+		foreach (var file in Model)
+		{
+			<tr>
+				<td>
+					<u>
+						@file.Name
+					</u>
+					<hr />
+					<video id="VideoPlayer" src='@Url.Action("DownloadFile", "TrustHeteros", new {fileId = file.Id})' controls="true"
+						   width="400" height="350" loop="true" />
+				</td>
+			</tr>
+		}
+	}
+</table>*@
 
 
-
-<section class="viewHeader", style="top: 100px;">
+<section class="viewHeader" , style="top: 100px;">
 	<div class="jumbotron">
 		<div class="title">
-			@*<h4>FIND SPORTS CLUBS AROUND YOU</h4>
-			<p>Search for a postcode or the type of sports you prefer from the tabel</p>
-			<p>Search for LGBT exclusive clubs from the table or the map</p>
-			<p>Switch between Table view and Map view</p>*@
+			<h4>WELLBEING OF LGBT COMMUNITIES</h4>
+			<p>Compared with the general population, LGBT people are more likely to face crime. General Social Survey 2020 (GSS 2020)  suggested around 8% of participants with non-mainstream sexual orientations have experienced assault or break-in in the last 12 months, which is 2 times of that for heterosexuals</p>
+			<p>This survey also found this community also tend to have lower trust in the healthcare system, the police, and the justice system. </p>
+				<p>Switch between Heterosexual and Homosexual community to view the level of trust</p>
 			<button class="btn btn-default" id="ht">Heterosexual group</button>
 			<button class="btn btn-default" id="hm">Homosexual group</button>
 		</div>
@@ -53,18 +78,18 @@
 </section>
 
 <section id="charts" style="height:500px ; top:100px">
-		<div class="col-lg-12 col-md-12" id="chartContainer" style="height: 400px;"></div>
+	<div class="col-lg-12 col-md-12" id="chartContainer" style="height: 400px;"></div>
 
-		<div class="col-lg-12 col-md-12" id="chartContainer2" style="height: 400px; visibility:hidden"></div>
+	<div class="col-lg-12 col-md-12" id="chartContainer2" style="height: 400px; visibility:hidden"></div>
 </section>
 
 <section class="viewHeader" , style="top: 100px;">
 	<div class="jumbotron">
 		<div class="title">
-			@*<h4>FIND SPORTS CLUBS AROUND YOU</h4>
-				<p>Search for a postcode or the type of sports you prefer from the tabel</p>
-				<p>Search for LGBT exclusive clubs from the table or the map</p>
-				<p>Switch between Table view and Map view</p>*@
+			<h4>DRUG USAGE OF LGBT COMMUNITIES</h4>
+			<p>Evidence suggests that, LGBT community are more likely to use tobacco and a range of illicit drugs. Estimates from the 2019 NDSHS indicate that daily smoking among LGBT people has steadily declined from 28% in 2010 to 16% in 2019 (AIHW 2020). However, LGB people are still 1.5 times as likely to smoke daily as heterosexual people.</p>
+			<p>Illicit usage of drugs among LGB people has steadily increased from 31.8% in 2010 to 36% in 2019</p>
+			<p>Switch between Heterosexual and Homosexual community to compare the drug usage</p>
 			<button class="btn btn-default" id="ht2">Heterosexual group</button>
 			<button class="btn btn-default" id="hm2">Homosexual group</button>
 		</div>
