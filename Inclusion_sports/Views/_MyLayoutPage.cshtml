@@ -1,182 +1,221 @@
-﻿<style>
-	.container-fuild img {
-		height: 56px;
-	}
-
-	.ownmenu .my-class {
-		font-size: 16px;
-	}
-
-	.main-header .logo {
-		margin: 20px 0px;
-			float: left;
-		display: inline;
-	}
-
-	.main-header .logo {
-		margin: 20px 0px;
-		/*	float: left;*/
-		display: inline;
-		font-family: 'Montserrat', sans-serif;
-	}
-
-	.main-header .logo:before {
-		background-color: #c50000;
-		content: '';
-		display: block;
-		height: 3px;
-		width: 72px;
-		margin-bottom: 5px;
-	}
-
-	.main-header .logo:after {
-		background-color: #c50000;
-		content: '';
-		display: block;
-		position: relative;
-		left: 145px;
-		bottom: 0;
-		height: 3px;
-		width: 100px;
-		margin-bottom: 0.25em;
-	}
-
-
-	.main-header {
-		padding-bottom: 0px;
-		position: fixed; /* Set the navbar to fixed position */
-		top: 0; /* Position the navbar at the top of the page */
-		width: 100%; /* Full width */
-		background: rgb(255 255 255);
-	}
-
-		.main-header .container {
-			height: 95px;
+﻿<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+<head>
+	<title>Home</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<link rel="icon" href="~/images2/favicon.ico" type="image/x-icon">
+	<!-- Stylesheets-->
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+	<link rel="stylesheet" href="~/css2/bootstrap.css">
+	<link rel="stylesheet" href="~/css2/fonts.css">
+	<link rel="stylesheet" href="~/css2/style.css">
+	<style>
+		.ie-panel {
+			display: none;
+			background: #212121;
+			padding: 10px 0;
+			box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+			clear: both;
+			text-align: center;
+			position: relative;
+			z-index: 1;
 		}
 
-	.footer-section {
-		background: #151414;
-		position: fixed;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		padding: 20px;
-	}
+		html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+			display: block;
+		}
 
-	.footer-content {
-		position: fixed;
-		z-index: 2;
-	}
+		.rd-navbar-brand:before {
+			background-color: #c50000;
+			content: '';
+			display: block;
+			height: 3px;
+			width: 62px;
+			margin-bottom: 3px;
+		}
 
-
-</style>
-<!DOCTYPE html>
-
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<title>@ViewBag.Title</title>
-	<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="~/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="~/css/main.css" rel="stylesheet" />
-	<link href="~/css/style.css" rel="stylesheet" />
-	<link href="~/css/responsive.css" rel="stylesheet" />
-	<link href="~/css/animate.css" rel="stylesheet" />
-	@*@Styles.Render("~/Content/css")*@
-	@*<link href="~/css/Header.css" rel="stylesheet" />*@
-	@*<link href="~/css/Footer.css" rel="stylesheet" />*@
-	<link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
-	@* This is for the mapbox map. *@
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
-	<link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-	@*This is used for the Geocoding Mapbox API*@
-	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-glgeocoder.min.js'></script>
-	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-glgeocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
-	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-	<a href="~/fonts/montserrat-bold-webfont.eot"></a>
-	<a href="~/fonts/montserrat-bold-webfont.ttf"></a>
-	<a href="~/fonts/montserrat-bold-webfont.woff"></a>
-	<a href="~/fonts/montserrat-bold-webfont.woff2"></a>
-	<a href="~/fonts/montserrat-hairline-webfont.eot"></a>
-	<a href="~/fonts/montserrat-hairline-webfont.ttf"></a>
-	<a href="~/fonts/montserrat-hairline-webfont.woff"></a>
-	<a href="~/fonts/montserrat-hairline-webfont.woff2"></a>
-	<a href="~/fonts/montserrat-light-webfont.eot"></a>
-	<a href="~/fonts/montserrat-light-webfont.ttf"></a>
-	<a href="~/fonts/montserrat-light-webfont.woff"></a>
-	<a href="~/fonts/montserrat-light-webfont.woff2"></a>
-	<a href="~/fonts/montserrat-regular-webfont.eot"></a>
-	<a href="~/fonts/montserrat-regular-webfont.ttf"></a>
-	<a href="~/fonts/montserrat-regular-webfont.woff"></a>
-	<a href="~/fonts/montserrat-regular-webfont.woff2"></a>
-	<link href="~/fonts/montserrat-fonts.css" rel="stylesheet" />
-	<script src="~/js/bootstrap.min.js"></script>
-	<script src="~/js/counter.js"></script>
-	<script src="~/js/jquery-1.11.3.min.js"></script>
-	<script src="~/js/jquery.isotope.min.js"></script>
-	<script src="~/js/main.js"></script>
-	<script src="~/js/owl.carousel.min.js"></script>
-	<script src="~/js/own-menu.js"></script>
+		.rd-navbar-brand:after {
+			background-color: #c50000;
+			content: '';
+			display: block;
+			position: relative;
+			left: 135px;
+			bottom: 0;
+			height: 3px;
+			width: 85px;
+			margin-bottom: 0;
+		}
+	</style>
 </head>
-			<div id="wrappp" class="no-padding">
-				<div id="main-wrapper">
-					<header class="main-header">
-						<div class="container col-md-12">
-							<div class="logo"><h4>Pride Melb<strong>Sports.</strong></h4></div>
-			<nav>
-								<ul id="ownmenu" class="ownmenu">
-									<li>@Html.ActionLink("Facts", "Index", "TrustHeteros")</li>
-									<li>@Html.ActionLink("Know your rights", "Index", "Rights")</li>
-									<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
-									<li>@Html.ActionLink("Events", "Index", "Events")</li>
-									<li>@Html.ActionLink("Home", "Index", "Home")</li>
-								</ul>
-							</nav>
-						</div>
-					</header>
-				</div>
+<body>
+	<div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="~/images2/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+	<div class="preloader">
+		<div class="preloader-body">
+			<div class="cssload-container">
+				<div class="cssload-speeding-wheel"></div>
 			</div>
-
-
-
-			<div>
-				@RenderBody()
-			</div>
-			@*<footer class="footer-section">
-					<div class="container">
-						<div class="footer-content pt-5 pb-5">
-							<div class="row">
-								<div class="col-lg-3 col-md-6">
-									<div class="footer-widget">
-										<div class="footer-logo">
-											<img src="~/images/logo_ver2.png" class="img-fluid" alt="logo">
-										</div>
-										<div class="footer-text">
-											<h3>PRIDE MELB<strong>SPORTS.</strong></h3>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-6">
-									<div class="footer-widget">
-										<div class="footer-widget-heading">
-											<h3>Useful Links</h3>
-										</div>
-										<ul>
-											<li>@Html.ActionLink("Home", "Index", "Home")</li>
-											<li><a href="#services">Services</a></li>
-											<li><a href="#about">About Us</a></li>
-											<li>@Html.ActionLink("Find Clubs", "Index", "Maps")</li>
-											<li>@Html.ActionLink("Events", "Index", "Events")</li>
-										</ul>
-									</div>
+			<p>Loading...</p>
+		</div>
+	</div>
+	<div class="page">
+		<header class="section page-header">
+			<!-- RD Navbar-->
+			<div class="rd-navbar-wrap">
+				<nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="106px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+					<div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+					<div class="rd-navbar-aside-outer">
+						<div class="rd-navbar-aside">
+							<!-- RD Navbar Panel-->
+							<div class="rd-navbar-panel">
+								<!-- RD Navbar Toggle-->
+								<button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+								<!-- RD Navbar Brand-->
+								<div class="rd-navbar-brand">
+									<!--Brand--><h4>Pride Melb<strong>Sports.</strong></h4>
 								</div>
 							</div>
 						</div>
 					</div>
-				</footer>*@
-			<script src="~/js/jquery-1.11.3.min.js"></script>
-			<script src="~/js/bootstrap.min.js"></script>
-			@RenderSection("Scripts", false)
-
-
+					<div class="rd-navbar-main-outer">
+						<div class="rd-navbar-main">
+							<div class="rd-navbar-nav-wrap">
+								<ul class="list-inline list-inline-md rd-navbar-corporate-list-social">
+									<li><a class="icon fa fa-facebook" href="#"></a></li>
+									<li><a class="icon fa fa-twitter" href="#"></a></li>
+									<li><a class="icon fa fa-google-plus" href="#"></a></li>
+									<li><a class="icon fa fa-instagram" href="#"></a></li>
+								</ul>
+								<!-- RD Navbar Nav-->
+								<ul class="rd-navbar-nav">
+									<li class="rd-nav-item active">
+										@Html.ActionLink("Home", "Index", "Home", null, new { @class = "rd-nav-link" })
+									</li>
+									<li class="rd-nav-item">
+										@Html.ActionLink("Events", "Index", "Events", null, new { @class = "rd-nav-link" })
+									</li>
+									<li class="rd-nav-item">
+										@Html.ActionLink("Find Clubs", "Index", "Maps", null, new { @class = "rd-nav-link" })
+									</li>
+									<li class="rd-nav-item">
+										@Html.ActionLink("Know your rights", "Index", "Rights", null, new { @class = "rd-nav-link" })
+									</li>
+									<li class="rd-nav-item">
+										@Html.ActionLink("Facts", "Index", "TrustHeteros", null, new { @class = "rd-nav-link" })
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<div>
+			@RenderBody()
+		</div>
+		<!-- Page Footer--><a class="banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img src="images/intense_big_02.jpg" alt="" /></a>
+		<footer class="section footer-corporate context-dark">
+			<div class="footer-corporate-inset">
+				<div class="container">
+					<div class="row row-40 justify-content-lg-between">
+						<div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
+							<div class="oh-desktop">
+								<div class="wow slideInRight" data-wow-delay="0s">
+									<h6 class="text-spacing-100 text-uppercase">Contact us</h6>
+									<ul class="footer-contacts d-inline-block d-sm-block">
+										<li>
+											<div class="unit">
+												<div class="unit-left"><span class="icon fa fa-phone"></span></div>
+												<div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="unit">
+												<div class="unit-left"><span class="icon fa fa-envelope"></span></div>
+												<div class="unit-body"><a class="link-aemail" href="mailto:#">info@demolink.org</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="unit">
+												<div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
+												<div class="unit-body"><a class="link-location" href="#">4730 Crystal Springs Dr, Los Angeles, CA 90027</a></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+							<div class="oh-desktop">
+								<div class="wow slideInDown" data-wow-delay="0s">
+									<h6 class="text-spacing-100 text-uppercase">Popular news</h6>
+									<!-- Post Minimal 2-->
+									<article class="post post-minimal-2">
+										<p class="post-minimal-2-title"><a href="#">Your Personal Guide to 5 Best Places to Visit on Earth</a></p>
+										<div class="post-minimal-2-time">
+											<time datetime="2019-05-04">May 04, 2019</time>
+										</div>
+									</article>
+									<!-- Post Minimal 2-->
+									<article class="post post-minimal-2">
+										<p class="post-minimal-2-title"><a href="#">Top 10 Hotels: Rating by Wonder Tour Travel Experts</a></p>
+										<div class="post-minimal-2-time">
+											<time datetime="2019-05-04">May 04, 2019</time>
+										</div>
+									</article>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
+							<div class="oh-desktop">
+								<div class="wow slideInLeft" data-wow-delay="0s">
+									<h6 class="text-spacing-100 text-uppercase">Quick links</h6>
+									<ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
+										<li><a href="about.html">About us</a></li>
+										<li><a href="#">Our Tours</a></li>
+										<li><a href="#">Our Team</a></li>
+										<li><a href="#">Gallery</a></li>
+										<li><a href="#">Blog</a></li>
+									</ul>
+									<div class="group-md group-middle justify-content-sm-start"><a class="button button-lg button-primary button-ujarak" href="#">Get in touch</a></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-corporate-bottom-panel">
+				<div class="container">
+					<div class="row justfy-content-xl-space-berween row-10 align-items-md-center2">
+						<div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+							<div>
+								<ul class="list-inline list-inline-sm footer-social-list-2">
+									<li><a class="icon fa fa-facebook" href="#"></a></li>
+									<li><a class="icon fa fa-twitter" href="#"></a></li>
+									<li><a class="icon fa fa-google-plus" href="#"></a></li>
+									<li><a class="icon fa fa-instagram" href="#"></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 order-sm-first">
+							<!-- Rights-->
+							<p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Wonder Tour</span>. All Rights Reserved. Design by <a href="https://www.templatemonster.com">TemplateMonster</a></p>
+						</div>
+						<div class="col-sm-6 col-md-4 text-md-right">
+							<p class="rights"><a href="#">Privacy Policy</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- Global Mailform Output-->
+	<div class="snackbars" id="form-output-global"></div>
+	<!-- Javascript-->
+	<script src="~/js2/core.min.js"></script>
+	<script src="~/js2/script.js"></script>
+	@RenderSection("Scripts", false)
+</body>
+</html>

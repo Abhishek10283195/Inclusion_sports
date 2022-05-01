@@ -3,7 +3,7 @@
 	ViewBag.Title = "Pride MelbSports";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
-<style>
+@*<style>
 		.container .row .col-sm-4 img {
 			max-width: 360px;
 			height: 280px;
@@ -28,9 +28,9 @@
 				max-width: 960px;
 			}
 
-	.home-slider {
-		top: 70px;
-	}
+		.home-slider {
+			top: 70px;
+		}
 
 		#showcase h1 {
 			text-align: center;
@@ -99,32 +99,190 @@
 		span {
 			font-weight: bold;
 		}
-	</style>
-<!--======= HOME MAIN SLIDER =========-->
+	</style>*@
+<!-- Swiper-->
+<section class="section swiper-container swiper-slider swiper-slider-corporate swiper-pagination-style-2" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="false" data-direction="vertical">
+	<div class="swiper-wrapper text-left">
+		<div class="swiper-slide context-dark" data-slide-bg="~/images2/slider-4-slide-1-1920x678.jpg">
+			<div class="swiper-slide-caption section-md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10">
+							<h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0" style="color: black">Promoting inclusive sporting environment across all diversities</h6>
+							<h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100" style="color: black"><span>Pride in </span><span class="font-weight-bold">Inclusive Sports</span></h2><a class="button button-default-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="0">Get in touch</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-slide context-dark" data-slide-bg="~/images2/slider-4-slide-2-1920x678.jpg">
+			<div class="swiper-slide-caption section-md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10">
+							<h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0">A team of professional Travel Experts</h6>
+							<h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span>Trust</span><span class="font-weight-bold"> Our Experience</span></h2><a class="button button-default-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="0">Get in touch</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-slide context-dark" data-slide-bg="~/images2/slider-4-slide-3-1920x678.jpg">
+			<div class="swiper-slide-caption section-md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10">
+							<h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0">Build your Next Holiday Trip with Us</h6>
+							<h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span>Create</span><span class="font-weight-bold"> Your Tour</span></h2><a class="button button-default-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="0">Get in touch</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Swiper Pagination-->
+	<div class="swiper-pagination"></div>
+</section>
+
+
+<!--	Our Services-->
+<section class="section section-sm">
+	<div class="container">
+		<h3>Our Services</h3>
+		<div class="row row-30">
+			<div class="col-sm-6 col-lg-4">
+				<article class="box-icon-classic">
+					<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+						<div class="unit-left">
+							<div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
+						</div>
+						<div class="unit-body">
+							<h5 class="box-icon-classic-title"><a href="#">Find Sports Clubs</a></h5>
+							<p class="box-icon-classic-text">Search for Sports clubs around you to get yourself back into the game</p>
+						</div>
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-6 col-lg-4">
+				<article class="box-icon-classic">
+					<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+						<div class="unit-left">
+							<div class="box-icon-classic-icon fl-bigmug-line-circular220"></div>
+						</div>
+						<div class="unit-body">
+							<h5 class="box-icon-classic-title"><a href="#">Event Calendar</a></h5>
+							<p class="box-icon-classic-text">Find out about upcoming schedules for Sports events and social gatherings</p>
+						</div>
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-6 col-lg-4">
+				<article class="box-icon-classic">
+					<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+						<div class="unit-left">
+							<div class="box-icon-classic-icon fl-bigmug-line-favourites5"></div>
+						</div>
+						<div class="unit-body">
+							<h5 class="box-icon-classic-title"><a href="#">Know your Rights</a></h5>
+							<p class="box-icon-classic-text">Find out more about your rights in Sports, know how to get help, tell us how you feel or report an incident</p>
+						</div>
+					</div>
+				</article>
+			</div>
+			<div class="col-sm-6 col-lg-4">
+				<article class="box-icon-classic">
+					<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+						<div class="unit-left">
+							<div class="box-icon-classic-icon fl-bigmug-line-headphones32"></div>
+						</div>
+						<div class="unit-body">
+							<h5 class="box-icon-classic-title"><a href="#">Facts</a></h5>
+							<p class="box-icon-classic-text">Enlighten yourself with the facts in terms of Health and Trust for LGBT communuities</p>
+						</div>
+					</div>
+				</article>
+			</div>
+			@*<div class="col-sm-6 col-lg-4">
+					<article class="box-icon-classic">
+						<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+							<div class="unit-left">
+								<div class="box-icon-classic-icon fl-bigmug-line-hot67"></div>
+							</div>
+							<div class="unit-body">
+								<h5 class="box-icon-classic-title"><a href="#">Handpicked Hotels</a></h5>
+								<p class="box-icon-classic-text">Our team offers only the best selection of affordable and luxury hotels to our clients.</p>
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="col-sm-6 col-lg-4">
+					<article class="box-icon-classic">
+						<div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+							<div class="unit-left">
+								<div class="box-icon-classic-icon fl-bigmug-line-wallet26"></div>
+							</div>
+							<div class="unit-body">
+								<h5 class="box-icon-classic-title"><a href="#">Best Price Guarantee</a></h5>
+								<p class="box-icon-classic-text">If you find tours that are cheaper than ours, we will compensate the difference.</p>
+							</div>
+						</div>
+					</article>
+				</div>*@
+		</div>
+	</div>
+</section>
+
+
+<!-- Discover New Horizons-->
+<section class="section section-sm section-first bg-default text-md-left">
+	<div class="container">
+		<div class="row row-50 align-items-center justify-content-center justify-content-xl-between">
+			<div class="col-lg-6 text-center wow fadeInUp">
+				<img src="~/images2/index-3-556x382.jpg" alt="" width="556" height="382" />
+			</div>
+			<div class="col-lg-6 wow fadeInRight" data-wow-delay=".1s">
+				<div class="box-width-lg-470">
+					<h3>Discover Inclusive Sports</h3>
+					<!-- Bootstrap tabs-->
+					<div class="tabs-custom tabs-horizontal tabs-line tabs-line-big tabs-line-style-2 text-center text-md-left" id="tabs-7">
+						<!-- Nav tabs-->
+						<ul class="nav nav-tabs">
+							<li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-7-1" data-toggle="tab">About us</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-2" data-toggle="tab">Our Vision</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-3" data-toggle="tab">Our mission</a></li>
+						</ul>
+						<!-- Tab panes-->
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="tabs-7-1">
+								<p>Sports enthusiasts from Monash University, promoting the inclusion through sports across all diversities</p>
+								<div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
+							</div>
+							<div class="tab-pane fade" id="tabs-7-2">
+								<p>Educate the rights of LGBT to the society, Increased sports participation from LGBT communitites</p>
+								<div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
+							</div>
+							<div class="tab-pane fade" id="tabs-7-3">
+								<p>Promote LGBT community to better engage in Sports by building connections and recognitions</p>
+								<div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
 <!--<section class="home-slider">
 	<div class="tp-banner-container">
 		<div class="tp-banner">
 			<ul>-->
 <!-- Slider 1 -->
-<!--<li>
-					<header id="showcase">
-						<h1>PRIDE MELBSPORTS.</h1>
-					</header>
-					<div id="content" class="container">
-						Promoting inclusive sporting environment across all diversities
-					</div>
-
-				</li>
-			</ul>
-		</div>
-	</div>
-</section>-->
-<section class="home-slider">
-	<div class="tp-banner-container">
-		<div class="tp-banner">
-			<ul>
-				<!-- Slider 1 -->
-				<li data-transition="fade" data-slotamount="5" data-masterspeed="700">
+<!--<li data-transition="fade" data-slotamount="5" data-masterspeed="700">
 					<header id="showcase">
 						<h1>PRIDE IN INCLUSIVE SPORTS</h1>
 					</header>
@@ -132,58 +290,57 @@
 						Promoting inclusive sporting environment across all diversities
 					</div>
 				</li>
-				
+
 			</ul>
 		</div>
 	</div>
-</section>
-
-<!--======= SERVICE SECTION =========-->
-<section id="services" class="sectoion-100px services light-gray-bg">
+</section>-->
+<!--<!--======= SERVICE SECTION =========-->
+<!--<section id="services" class="sectoion-100px services light-gray-bg">
 	<div class="container">
 		<div class="tittle">
 			<h4>WHY ARE WE HERE?</h4>
 			<p><span>LGBT</span>, who occupy approximately 11% of the Australian population, has the lowest participation in sports compared to other communities as a result of Homophobia</p>
 			<p>A research based in Australia suggests that 50% of the LGBT community believe that they are 'not accepted' by the sports culture and community</p>
 		</div>
-<div class="tittle">
-	<h4>services that we provide</h4>
-</div>
-<ul class="row">
-<li class="col-md-4">
-	<div class="ser-in margin-bottom-30">
-		<div class="icon"> <img src="~/images/noun-sports-4038485.png" alt=""> </div>
-		<h5>Find Clubs</h5>
-		<hr>
-		<p> Search for Sports clubs around you to get yourself back into the game </p>
-		<p><a class="btn btn-default" href='@Url.Action("Index", "Maps/Index")'>Learn more &raquo;</a></p>
-	</div>
-</li>
-<li class="col-md-4">
-	<div class="ser-in margin-bottom-30">
-		<div class="icon"> <img src="~/images/noun-event-2152282.png" alt=""> </div>
-		<h5>Event Calendar</h5>
-		<hr>
-		<p> Find out about upcoming Sports events and social gatherings </p>
-		<p><a class="btn btn-default" href='@Url.Action("Index", "Events/Index")'>Learn more &raquo;</a></p>
-	</div>
-</li>
-<li class="col-md-4 margin-bottom-30">
-	<div class="ser-in">
-		<div class="icon"> <img src="~/images/icon-3.png" alt=""> </div>
-		<h5>Know your rights</h5>
-		<hr>
-		<p> Find out more about your rights in Sports, know how to get help, tell us how you feel or report an incident </p>
-		<p><a class="btn btn-default" href='@Url.Action("Index", "Reporting/Index")'>Learn more &raquo;</a></p>
-	</div>
+		<div class="tittle">
+			<h4>services that we provide</h4>
+		</div>
+		<ul class="row">
+			<li class="col-md-4">
+				<div class="ser-in margin-bottom-30">
+					<div class="icon"> <img src="~/images/noun-sports-4038485.png" alt=""> </div>
+					<h5>Find Clubs</h5>
+					<hr>
+					<p> Search for Sports clubs around you to get yourself back into the game </p>
+					<p><a class="btn btn-default" href='@Url.Action("Index", "Maps/Index")'>Learn more &raquo;</a></p>
+				</div>
+			</li>
+			<li class="col-md-4">
+				<div class="ser-in margin-bottom-30">
+					<div class="icon"> <img src="~/images/noun-event-2152282.png" alt=""> </div>
+					<h5>Event Calendar</h5>
+					<hr>
+					<p> Find out about upcoming Sports events and social gatherings </p>
+					<p><a class="btn btn-default" href='@Url.Action("Index", "Events/Index")'>Learn more &raquo;</a></p>
+				</div>
+			</li>
+			<li class="col-md-4 margin-bottom-30">
+				<div class="ser-in">
+					<div class="icon"> <img src="~/images/icon-3.png" alt=""> </div>
+					<h5>Know your rights</h5>
+					<hr>
+					<p> Find out more about your rights in Sports, know how to get help, tell us how you feel or report an incident </p>
+					<p><a class="btn btn-default" href='@Url.Action("Index", "Reporting/Index")'>Learn more &raquo;</a></p>
+				</div>
 			</li>
 		</ul>
 	</div>
-</section>
+</section>-->
 @*======= ABOUT SECTION =========*@
-<section id="about" class="sectoion-100px about">
+<!--<section id="about" class="sectoion-100px about">
 	<div class="container">
-<div class="tittle">
+		<div class="tittle">
 			<h4>About the Website</h4>
 			<p>Find your place in Sports, Meet people, Build connections, Know your rights</p>
 		</div>
@@ -211,7 +368,7 @@
 			</li>
 		</ul>
 	</div>
-</section>
+</section>-->
 <script src="~/js/jquery-1.11.3.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
 <script src="~/js/own-menu.js"></script>
@@ -220,4 +377,4 @@
 <script src="~/js/counter.js"></script>
 <script type="~/text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script type="~/text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="~/js/main.js"></script>
+<script src="~/js/main.js"></script>-->
