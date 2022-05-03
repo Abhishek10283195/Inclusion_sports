@@ -15,12 +15,7 @@
 	.viewHeader {
 		top:100px;
 	}
-	.map .toggle-buttons {
-		left:50px;
-	}
-	.map {
-		top:50px;
-	}
+
 
 	.tableheader {
 		top: 140px;
@@ -174,7 +169,7 @@
 			</tbody>
 		</table>
 	</section>
-	<section class="map">
+	<section class="thismap" style="top: 10px">
 		<div class="toggle-buttons" style="display:none">
 
 			<input type="checkbox" name="filter" id="LGBT" class='chk-btn'>
@@ -223,13 +218,13 @@
 			$("#mp").click(function () {
 				$("#MapDiv").toggle();
 				$(".toggle-buttons").show();
-				$("#thistable").hide();
+				$("#thistable_wrapper").hide();
 				$(".filter-checkbox").hide();
 				$("#filterLabel1").hide();
 				$("#filterLabel2").hide();
 			});
 			$("#tbl").click(function () {
-				$("#thistable").toggle();
+				$("#thistable_wrapper").toggle();
 				$("#MapDiv").hide();
 				$(".toggle-buttons").hide();
 				$(".filter-checkbox").show();
