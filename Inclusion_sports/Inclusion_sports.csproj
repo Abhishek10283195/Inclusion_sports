@@ -1419,7 +1419,6 @@
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\_MyLayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="rs-plugin\.DS_Store" />
     <Content Include="rs-plugin\assets\arrows.psd" />

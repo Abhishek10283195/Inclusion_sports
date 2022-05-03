@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
-	<title>Home</title>
+	<title>@ViewBag.Title</title>
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,7 +85,7 @@
 							
 								<!-- RD Navbar Nav-->
 								<ul class="rd-navbar-nav">
-									<li class="rd-nav-item active">
+									<li class="rd-nav-item">
 										@Html.ActionLink("HOME", "Index", "Home", null, new { @class = "rd-nav-link" })
 									</li>
 									<li class="rd-nav-item">
@@ -153,7 +153,7 @@
 										<li><a href='@Url.Action("Index", "Events/Index")'>Event Calendar</a></li>
 										<li><a href='@Url.Action("Index", "Rights/Index")'>Know your rights</a></li>
 										<li><a href="@Url.Action("Index", "TrustHeteros/Index")">Facts</a></li>
-										<li><a href="#about">About us</a></li>
+										<li><a href="Home/#about">About us</a></li>
 									</ul>									
 								</div>
 							</div>
@@ -167,9 +167,6 @@
 						<div class="col-sm-6 col-md-4 order-sm-first">
 							<!-- Rights-->
 							<p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Wonder Tour</span>. All Rights Reserved. Design by <a href="https://www.templatemonster.com">TemplateMonster</a></p>
-						</div>
-						<div class="col-sm-6 col-md-4 text-md-right">
-							<p class="rights"><a href="#">Privacy Policy</a></p>
 						</div>
 					</div>
 				</div>

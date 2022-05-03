@@ -3,103 +3,7 @@
 	ViewBag.Title = "Pride MelbSports";
 	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
-@*<style>
-		.container .row .col-sm-4 img {
-			max-width: 360px;
-			height: 280px;
-		}
 
-		.tp-banner-container .tp-banner img {
-			width: 100%;
-		}
-
-		.tp-banner-container {
-			background-image: url('../../images/joshua-burdick-unsplash-169-3.jpg');
-			height: 650px;
-			background-size: cover;
-			background-repeat: no-repeat;
-		}
-
-			.tp-banner-container .tp-banner .container {
-				line-height: 1.6;
-				text-align: center;
-				color: white;
-				font-family: 'montserratregular';
-				max-width: 960px;
-			}
-
-		.home-slider {
-			top: 70px;
-		}
-
-		#showcase h1 {
-			text-align: center;
-			font-size: 48px;
-			font-family: 'montserratregular';
-			color: white;
-			font-size: 50px;
-			line-height: 1.3;
-			position: relative;
-			animation: heading;
-			animation-duration: 2s;
-			animation-fill-mode: forwards;
-		}
-
-		@@keyframes heading {
-			0% {
-				top: -50px;
-			}
-
-			100% {
-				top: 200px;
-			}
-		}
-
-		#content {
-			font-size: 20px;
-			position: relative;
-			animation-name: content;
-			animation-duration: 2s;
-			animation-fill-mode: forwards;
-		}
-
-		@@keyframes content {
-			0% {
-				top: -50px;
-			}
-
-			100% {
-				top: 200px;
-			}
-		}
-
-		.icon img {
-			height: 38px;
-			width: 50px;
-		}
-
-		.container .tittle p {
-			color: #989898;
-			font-size: 16px;
-			line-height: 28px;
-			font-family: 'montserratlight';
-		}
-
-		.row .col-sm-4 p {
-			color: #989898;
-			font-size: 16px;
-			line-height: 28px;
-			font-family: 'montserratlight';
-		}
-
-		.home-slider {
-			padding-top: 0px;
-		}
-
-		span {
-			font-weight: bold;
-		}
-	</style>*@
 
 
 <!-- Swiper-->
@@ -112,7 +16,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0">Promoting inclusive sporting environment across all diversities</h6>
-							<h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span>Pride in </span><span class="font-weight-bold">Inclusive Sports</span></h2><a class="button button-default-outline button-ujarak" href="#services" data-caption-animate="fadeInLeft" data-caption-delay="0">Get Started</a>
+							<h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span>Pride in </span><span class="font-weight-bold">Inclusive Sports</span></h2>
 						</div>
 					</div>
 				</div>
@@ -160,7 +64,7 @@
 							<div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
 						</div>
 						<div class="unit-body">
-							<h5 class="box-icon-classic-title"><a href="#">Find Sports Clubs</a></h5>
+							<h5 class="box-icon-classic-title"><a href='@Url.Action("Index", "Maps/Index")'>Find Sports Clubs</a></h5>
 							<p class="box-icon-classic-text">Search for Sports clubs around you to get yourself back into the game</p>
 						</div>
 					</div>
@@ -173,7 +77,7 @@
 							<div class="box-icon-classic-icon fl-bigmug-line-circular220"></div>
 						</div>
 						<div class="unit-body">
-							<h5 class="box-icon-classic-title"><a href="#">Event Calendar</a></h5>
+							<h5 class="box-icon-classic-title"><a href='@Url.Action("Index", "Events/Index")'>Event Calendar</a></h5>
 							<p class="box-icon-classic-text">Find out about upcoming schedules for Sports events and social gatherings</p>
 						</div>
 					</div>
@@ -186,7 +90,7 @@
 							<div class="box-icon-classic-icon fl-bigmug-line-favourites5"></div>
 						</div>
 						<div class="unit-body">
-							<h5 class="box-icon-classic-title"><a href="#">Know your Rights</a></h5>
+							<h5 class="box-icon-classic-title"><a href='@Url.Action("Index", "Rights/Index")'>Know your Rights</a></h5>
 							<p class="box-icon-classic-text">Find out more about your rights in Sports, know how to get help, tell us how you feel or report an incident</p>
 						</div>
 					</div>
@@ -199,7 +103,7 @@
 							<div class="box-icon-classic-icon fl-bigmug-line-headphones32"></div>
 						</div>
 						<div class="unit-body">
-							<h5 class="box-icon-classic-title"><a href="#">Facts</a></h5>
+							<h5 class="box-icon-classic-title"><a href='@Url.Action("Index", "TrustHeteros/Index")'>Facts</a></h5>
 							<p class="box-icon-classic-text">Enlighten yourself with the facts in terms of Health and Trust for LGBT communuities</p>
 						</div>
 					</div>
@@ -279,99 +183,6 @@
 
 
 
-
-<!--<section class="home-slider">
-	<div class="tp-banner-container">
-		<div class="tp-banner">
-			<ul>-->
-<!-- Slider 1 -->
-<!--<li data-transition="fade" data-slotamount="5" data-masterspeed="700">
-					<header id="showcase">
-						<h1>PRIDE IN INCLUSIVE SPORTS</h1>
-					</header>
-					<div id="content" class="container">
-						Promoting inclusive sporting environment across all diversities
-					</div>
-				</li>
-
-			</ul>
-		</div>
-	</div>
-</section>-->
-<!--<!--======= SERVICE SECTION =========-->
-<!--<section id="services" class="sectoion-100px services light-gray-bg">
-	<div class="container">
-		<div class="tittle">
-			<h4>WHY ARE WE HERE?</h4>
-			<p><span>LGBT</span>, who occupy approximately 11% of the Australian population, has the lowest participation in sports compared to other communities as a result of Homophobia</p>
-			<p>A research based in Australia suggests that 50% of the LGBT community believe that they are 'not accepted' by the sports culture and community</p>
-		</div>
-		<div class="tittle">
-			<h4>services that we provide</h4>
-		</div>
-		<ul class="row">
-			<li class="col-md-4">
-				<div class="ser-in margin-bottom-30">
-					<div class="icon"> <img src="~/images/noun-sports-4038485.png" alt=""> </div>
-					<h5>Find Clubs</h5>
-					<hr>
-					<p> Search for Sports clubs around you to get yourself back into the game </p>
-					<p><a class="btn btn-default" href='@Url.Action("Index", "Maps/Index")'>Learn more &raquo;</a></p>
-				</div>
-			</li>
-			<li class="col-md-4">
-				<div class="ser-in margin-bottom-30">
-					<div class="icon"> <img src="~/images/noun-event-2152282.png" alt=""> </div>
-					<h5>Event Calendar</h5>
-					<hr>
-					<p> Find out about upcoming Sports events and social gatherings </p>
-					<p><a class="btn btn-default" href='@Url.Action("Index", "Events/Index")'>Learn more &raquo;</a></p>
-				</div>
-			</li>
-			<li class="col-md-4 margin-bottom-30">
-				<div class="ser-in">
-					<div class="icon"> <img src="~/images/icon-3.png" alt=""> </div>
-					<h5>Know your rights</h5>
-					<hr>
-					<p> Find out more about your rights in Sports, know how to get help, tell us how you feel or report an incident </p>
-					<p><a class="btn btn-default" href='@Url.Action("Index", "Reporting/Index")'>Learn more &raquo;</a></p>
-				</div>
-			</li>
-		</ul>
-	</div>
-</section>-->
-@*======= ABOUT SECTION =========*@
-<!--<section id="about" class="sectoion-100px about">
-	<div class="container">
-		<div class="tittle">
-			<h4>About the Website</h4>
-			<p>Find your place in Sports, Meet people, Build connections, Know your rights</p>
-		</div>
-		<ul class="row">
-			<li class="col-sm-4">
-				<img class="img-responsive" src="~/images/cynthia-magana-mFPJXEQfb9M-unsplash.jpg" alt="">
-				<h6 class="margin-top-20">Who we are</h6>
-				<p>
-					Sports enthusiasts from Monash University, promoting the inclusion through sports across all diversities
-				</p>
-			</li>
-			<li class="col-sm-4">
-				<img class="img-responsive" src="~/images/about-img-2.jpg" alt="">
-				<h6 class="margin-top-20">our mission</h6>
-				<p>
-					Promote LGBT community to better engage in Sports by building connections and recognitions
-				</p>
-			</li>
-			<li class="col-sm-4">
-				<img class="img-responsive" src="~/images/jed-villejo-bEcC0nyIp2g-unsplash.jpg" alt="">
-				<h6 class="margin-top-20">our vision</h6>
-				<p>
-					Educate the rights of LGBT to the society, Increased sports participation from LGBT communitites
-				</p>
-			</li>
-		</ul>
-	</div>
-</section>-->
 <script src="~/js/jquery-1.11.3.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
 <script src="~/js/own-menu.js"></script>
