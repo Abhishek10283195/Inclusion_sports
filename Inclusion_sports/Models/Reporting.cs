@@ -11,12 +11,16 @@ namespace Inclusion_sports.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Reporting
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Reporting
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Answer { get; set; }
     }
 }

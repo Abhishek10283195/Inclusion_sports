@@ -1,41 +1,73 @@
 ﻿@model IEnumerable<Inclusion_sports.Models.Reporting>
 
 @{
-    ViewBag.Title = "Know your Rights";
-    Layout = "~/Views/_MyLayoutPage.cshtml";
+	ViewBag.Title = "Report Incident";
+	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
+<style>
+	.w3layouts_main p {
+		color: white;
+		font-size: 16px;
+	}
+</style>
+@*<h2>Index</h2>
 
-<h2>Index</h2>
+	<p>
+		@Html.ActionLink("Create New", "Create")
+	</p>
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Answer)
+			</th>
+			<th></th>
+		</tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Answer)
-        </th>
-        <th></th>
-    </tr>
+	@foreach (var item in Model) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Email)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Answer)
+			</td>
+		</tr>
+	}
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Answer)
-        </td>
-    </tr>
-}
+	</table>*@
 
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- custom-theme -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Elegant Feedback Form  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+			   function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //custom-theme -->
+	<link href="~/report/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body class="agileits_w3layouts">
+	<h1 class="agile_head text-center">REPORT AN INCIDENT</h1>
+	<div class="w3layouts_main wrap">
+		<h3 style="font-size: 18px; color:aqua">Your response has been recorded! </h3>
+		<p>We hope you feel better.</p>
+		<p>It is absolutely imperative that every human being’s freedom and human rights are respected, all over the world.</p>
+		<p>You are powerful because you survived.</p>
+	</div>
+
+</body>
+</html>

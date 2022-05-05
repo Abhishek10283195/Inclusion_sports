@@ -1447,6 +1447,7 @@
     <Content Include="Views\TrustHeteros\Details.cshtml" />
     <Content Include="Views\TrustHeteros\Edit.cshtml" />
     <Content Include="Views\TrustHeteros\Index.cshtml" />
+    <Content Include="Views\Reporting\Submit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
