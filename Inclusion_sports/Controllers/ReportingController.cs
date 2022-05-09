@@ -22,6 +22,7 @@ namespace Inclusion_sports.Controllers
             return View(context.Reportings.ToList());
         }
 
+    
         public ActionResult Create()
         {
             Reporting model = new Reporting();
@@ -29,6 +30,7 @@ namespace Inclusion_sports.Controllers
         }
 
         [HttpPost]
+
         public async Task<ActionResult> Create(Reporting model)
         {
             if (ModelState.IsValid)
