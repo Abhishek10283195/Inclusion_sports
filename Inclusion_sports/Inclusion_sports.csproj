@@ -163,6 +163,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Calorie.mdf" />
+    <Content Include="App_Data\Calorie_log.ldf">
+      <DependentUpon>Calorie.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Epic3.mdf" />
     <Content Include="App_Data\Epic3_log.ldf">
       <DependentUpon>Epic3.mdf</DependentUpon>
@@ -564,6 +568,16 @@
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\own-menu.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Models\Calorie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Calorie.edmx</DependentUpon>
+      <LastGenOutput>Calorie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Calorie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Calorie.edmx</DependentUpon>
+      <LastGenOutput>Calorie1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Events.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Events.Context.cs</LastGenOutput>
@@ -1170,6 +1184,13 @@
     <Content Include="fonts2\MaterialIcons-Regular.ttf" />
     <Content Include="fonts2\MaterialIcons-Regular.woff" />
     <Content Include="fonts2\MaterialIcons-Regular.woff2" />
+    <EntityDeploy Include="Models\Calorie.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Calorie.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Calorie.edmx.diagram">
+      <DependentUpon>Calorie.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_be.html" />
     <Content Include="Scripts\dhtmlxScheduler\sources\locale\recurring\repeat_template_cn.html" />
@@ -1292,6 +1313,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CaloriesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
@@ -1308,6 +1330,24 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calorie.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Calorie.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calorie.cs">
+      <DependentUpon>Calorie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calorie.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Calorie.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calorie1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Calorie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
       <DependentUpon>Events.tt</DependentUpon>
@@ -1494,6 +1534,16 @@
     <Content Include="Views\TrustHeteros\Index.cshtml" />
     <Content Include="Views\Reporting\Submit.cshtml" />
     <Content Include="Views\Yoga\Index.cshtml" />
+    <Content Include="Views\Sports\Create.cshtml" />
+    <Content Include="Views\Sports\Delete.cshtml" />
+    <Content Include="Views\Sports\Details.cshtml" />
+    <Content Include="Views\Sports\Edit.cshtml" />
+    <Content Include="Views\Sports\Index.cshtml" />
+    <Content Include="Views\Calories\Create.cshtml" />
+    <Content Include="Views\Calories\Delete.cshtml" />
+    <Content Include="Views\Calories\Details.cshtml" />
+    <Content Include="Views\Calories\Edit.cshtml" />
+    <Content Include="Views\Calories\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

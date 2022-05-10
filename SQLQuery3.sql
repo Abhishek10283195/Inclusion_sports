@@ -1,6 +1,13 @@
-﻿
+﻿CREATE TABLE [dbo].[Sport] (
+ [Id] int IDENTITY(1,1) NOT NULL,
+ [Sports] nvarchar(max) NOT NULL,
+PRIMARY KEY (Id)
+);
+GO
+
 CREATE TABLE [dbo].[Calorie] (
  [Id] int IDENTITY(1,1) NOT NULL,
+ [SportId] int NOT NULL,
  [SportName] nvarchar(max) NOT NULL,
  [Degree] nvarchar(max) NOT NULL,
  [Coef] int NOT NULL,
@@ -10,5 +17,6 @@ CREATE TABLE [dbo].[Calorie] (
 [W180lb] int NOT NULL,
 [W205lb] int NOT NULL,
 PRIMARY KEY (Id),
+FOREIGN KEY (SportId) REFERENCES Sport(Id)
 );
 GO

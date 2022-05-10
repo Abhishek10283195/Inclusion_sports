@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+
+@{
+	ViewBag.Title = "Home";
+}
+<!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
 	<title>@ViewBag.Title - Pride MelbSports</title>
@@ -82,7 +87,7 @@
 					<div class="rd-navbar-main-outer">
 						<div class="rd-navbar-main">
 							<div class="rd-navbar-nav-wrap">
-							
+
 								<!-- RD Navbar Nav-->
 								<ul class="rd-navbar-nav">
 									<li class="rd-nav-item">
@@ -99,6 +104,9 @@
 									</li>
 									<li class="rd-nav-item">
 										@Html.ActionLink("FACTS", "Index", "TrustHeteros", null, new { @class = "rd-nav-link" })
+									</li>
+									<li class="rd-nav-item">
+										@Html.ActionLink("YOGA", "Index", "Yoga", null, new { @class = "rd-nav-link" })
 									</li>
 								</ul>
 							</div>
@@ -119,7 +127,7 @@
 							<div class="oh-desktop">
 								<div class="wow slideInRight" data-wow-delay="0s">
 									<h6 class="text-spacing-100 text-uppercase">Pride MelbSports.<br /></h6>
-									<img class="center" src="~/images/logo_ver2.png"/>
+									<img class="center" src="~/images/logo_ver2.png" />
 								</div>
 							</div>
 						</div>
@@ -153,8 +161,9 @@
 										<li><a href='@Url.Action("Index", "Events/Index")'>Event Calendar</a></li>
 										<li><a href='@Url.Action("Index", "Rights/Index")'>Know your rights</a></li>
 										<li><a href="@Url.Action("Index", "TrustHeteros/Index")">Facts</a></li>
+										<li><a href="@Url.Action("Index", "Yoga/Index")">Learn Yoga</a></li>
 										<li><a href="Home/#about">About us</a></li>
-									</ul>									
+									</ul>
 								</div>
 							</div>
 						</div>

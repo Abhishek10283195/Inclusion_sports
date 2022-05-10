@@ -1,0 +1,83 @@
+﻿@model Inclusion_sports.Models.Calorie
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_MyLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Calorie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SportName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SportName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Degree)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intercept)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intercept)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W130lb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.W130lb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W155lb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.W155lb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W180lb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.W180lb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W205lb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.W205lb)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

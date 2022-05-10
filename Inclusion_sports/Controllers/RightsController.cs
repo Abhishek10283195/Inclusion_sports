@@ -9,7 +9,7 @@ namespace Inclusion_sports.Controllers
     public class RightsController : Controller
     {
         // GET: Rights
-        [Authorize]
+
         public ActionResult Index()
         {
             return View();
