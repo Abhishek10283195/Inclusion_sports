@@ -56,7 +56,8 @@ namespace Inclusion_sports.Controllers
             var intercept = db.Calories.Where(p => p.SportName == sportType && p.Degree == " " + degree).Select(p => p.Intercept).FirstOrDefault();
 
             var calories = decDuration * ((coeff * decWeight) + intercept);
-            ViewBag.Message = calories;
+
+            ViewBag.Message = "Calories Burned: " + calories.ToString("F") + "cal";
             return View();
         }
 
