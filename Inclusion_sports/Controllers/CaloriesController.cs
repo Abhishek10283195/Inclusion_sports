@@ -16,12 +16,50 @@ namespace Inclusion_sports.Controllers
     public class CaloriesController : Controller
     {
         private CalorieEntities2 db = new CalorieEntities2();
+		public JsonResult GetSportNames(string term)
+
+		{
+
+			List<string> SportNames = db.Calories.Where(s => s.SportName.StartsWith(term))
+
+				.Select(x => x.SportName).Distinct().ToList();
+
+			return Json(SportNames, JsonRequestBehavior.AllowGet);
+		}
+
+        public JsonResult GetDegree(string term)
+
+        {
+
+            List<string> SDegree = db.Calories.Where(s => s.Degree.StartsWith(term))
+
+                .Select(x => x.Degree).Distinct().ToList();
+
+            return Json(SDegree, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Calories
         public ActionResult Index()
         {
             return View(db.Calories.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            string sportType = form["sportstype"];
+            string degree = form["degree"];
+            var weight = form["weight"];
+            var decWeight = Convert.ToDecimal(weight);
+            var duration = form["duration"];
+            var decDuration = Convert.ToDecimal(duration);
+            var coeff = db.Calories.Where(p => p.SportName == sportType && p.Degree == " " + degree).Select(p => p.Coef).FirstOrDefault();
+            var intercept = db.Calories.Where(p => p.SportName == sportType && p.Degree == " " + degree).Select(p => p.Intercept).FirstOrDefault();
+
+            var calories = decDuration * ((coeff * decWeight) + intercept);
+            ViewBag.Message = calories;
+            return View();
+        }
+
 
         // GET: Calories/Details/5
         public ActionResult Details(int? id)
@@ -41,6 +79,7 @@ namespace Inclusion_sports.Controllers
         // GET: Calories/Create
         public ActionResult Create()
         {
+            ViewBag.Data = new SelectList(db.Calories, "Id", "SportName");
             return View();
         }
 
