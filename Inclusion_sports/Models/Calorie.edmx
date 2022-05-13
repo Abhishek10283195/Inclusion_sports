@@ -11,13 +11,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SportName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SportDegree" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Degree" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Coef" Type="numeric" Precision="10" Scale="8" Nullable="false" />
           <Property Name="Intercept" Type="numeric" Precision="10" Scale="8" Nullable="false" />
-          <Property Name="W130lb" Type="int" Nullable="false" />
-          <Property Name="W155lb" Type="int" Nullable="false" />
-          <Property Name="W180lb" Type="int" Nullable="false" />
-          <Property Name="W205lb" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CalorieModelStoreContainer">
           <EntitySet Name="Calorie" EntityType="Self.Calorie" Schema="dbo" store:Type="Tables" />
@@ -33,15 +30,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SportName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SportDegree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Degree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Coef" Type="Decimal" Precision="10" Scale="8" Nullable="false" />
           <Property Name="Intercept" Type="Decimal" Precision="10" Scale="8" Nullable="false" />
-          <Property Name="W130lb" Type="Int32" Nullable="false" />
-          <Property Name="W155lb" Type="Int32" Nullable="false" />
-          <Property Name="W180lb" Type="Int32" Nullable="false" />
-          <Property Name="W205lb" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CalorieEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CalorieEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Calories" EntityType="Self.Calorie" />
         </EntityContainer>
       </Schema>
@@ -49,19 +43,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CalorieModelStoreContainer" CdmEntityContainer="CalorieEntities2">
+        <EntityContainerMapping StorageEntityContainer="CalorieModelStoreContainer" CdmEntityContainer="CalorieEntities3">
           <EntitySetMapping Name="Calories">
             <EntityTypeMapping TypeName="CalorieModel.Calorie">
               <MappingFragment StoreEntitySet="Calorie">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SportName" ColumnName="SportName" />
+                <ScalarProperty Name="SportDegree" ColumnName="SportDegree" />
                 <ScalarProperty Name="Degree" ColumnName="Degree" />
                 <ScalarProperty Name="Coef" ColumnName="Coef" />
                 <ScalarProperty Name="Intercept" ColumnName="Intercept" />
-                <ScalarProperty Name="W130lb" ColumnName="W130lb" />
-                <ScalarProperty Name="W155lb" ColumnName="W155lb" />
-                <ScalarProperty Name="W180lb" ColumnName="W180lb" />
-                <ScalarProperty Name="W205lb" ColumnName="W205lb" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

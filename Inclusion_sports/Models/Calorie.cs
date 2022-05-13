@@ -16,12 +16,9 @@ namespace Inclusion_sports.Models
     {
         public int Id { get; set; }
         public string SportName { get; set; }
+        public string SportDegree { get; set; }
         public string Degree { get; set; }
         public decimal Coef { get; set; }
         public decimal Intercept { get; set; }
-        public int W130lb { get; set; }
-        public int W155lb { get; set; }
-        public int W180lb { get; set; }
-        public int W205lb { get; set; }
     }
 }

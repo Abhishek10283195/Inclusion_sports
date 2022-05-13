@@ -15,28 +15,18 @@ namespace Inclusion_sports.Controllers
 {
     public class CaloriesController : Controller
     {
-        private CalorieEntities2 db = new CalorieEntities2();
-		public JsonResult GetSportNames(string term)
-
-		{
-
-			List<string> SportNames = db.Calories.Where(s => s.SportName.StartsWith(term))
-
-				.Select(x => x.SportName).Distinct().ToList();
-
-			return Json(SportNames, JsonRequestBehavior.AllowGet);
-		}
-
-        public JsonResult GetDegree(string term)
+        private CalorieEntities3 db = new CalorieEntities3();
+        public JsonResult GetSportNames(string term)
 
         {
 
-            List<string> SDegree = db.Calories.Where(s => s.Degree.StartsWith(term))
+            List<string> SportNames = db.Calories.Where(s => s.SportDegree.StartsWith(term))
 
-                .Select(x => x.Degree).Distinct().ToList();
+                .Select(x => x.SportDegree).Distinct().ToList();
 
-            return Json(SDegree, JsonRequestBehavior.AllowGet);
+            return Json(SportNames, JsonRequestBehavior.AllowGet);
         }
+
 
         // GET: Calories
         public ActionResult Index()
@@ -47,13 +37,12 @@ namespace Inclusion_sports.Controllers
         public ActionResult Index(FormCollection form)
         {
             string sportType = form["sportstype"];
-            string degree = form["degree"];
             var weight = form["weight"];
             var decWeight = Convert.ToDecimal(weight);
             var duration = form["duration"];
             var decDuration = Convert.ToDecimal(duration);
-            var coeff = db.Calories.Where(p => p.SportName == sportType && p.Degree == " " + degree).Select(p => p.Coef).FirstOrDefault();
-            var intercept = db.Calories.Where(p => p.SportName == sportType && p.Degree == " " + degree).Select(p => p.Intercept).FirstOrDefault();
+            var coeff = db.Calories.Where(p => p.SportDegree == sportType).Select(p => p.Coef).FirstOrDefault();
+            var intercept = db.Calories.Where(p => p.SportDegree == sportType).Select(p => p.Intercept).FirstOrDefault();
 
             var calories = decDuration * ((coeff * decWeight) + intercept);
 
@@ -208,13 +197,11 @@ namespace Inclusion_sports.Controllers
                         {
                             Calorie TU = new Calorie();
                             TU.SportName = a.SportName;
+                            TU.SportDegree = a.SportDegree;
                             TU.Coef = a.Coef;
                             TU.Degree = a.Degree;
                             TU.Intercept = a.Intercept;
-                            TU.W130lb = a.W130lb;
-                            TU.W155lb = a.W155lb;
-                            TU.W180lb = a.W180lb;
-                            TU.W205lb = a.W205lb;
+
 
                             db.Calories.Add(TU);
                             db.SaveChanges();

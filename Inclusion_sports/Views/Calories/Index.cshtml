@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<Inclusion_sports.Models.Calorie>
 
 @{
-	ViewBag.Title = "Index";
-	Layout = "~/Views/_MyLayoutPage.cshtml";
-
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 
 @*<h4>Add Users via Excel</h4>
@@ -29,78 +28,57 @@
 				</div>
 			</div>
 		</div>
-	}
+	}*@
 
-	<p>
-		@Html.ActionLink("Create New", "Create")
-	</p>
-	<table class="table">
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.SportName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Degree)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Coef)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Intercept)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.W130lb)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.W155lb)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.W180lb)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.W205lb)
-			</th>
-			<th></th>
-		</tr>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SportName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SportDegree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Degree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Intercept)
+        </th>
+        <th></th>
+    </tr>
 
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.SportName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Degree)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Coef)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Intercept)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.W130lb)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.W155lb)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.W180lb)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.W205lb)
-				</td>
-				<td>
-					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-				</td>
-			</tr>
-		}
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SportName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SportDegree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Degree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Intercept)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
-	</table>*@
-
-
+</table>*@
 
 @section Scripts{
 
@@ -118,13 +96,7 @@
 
 		   });
 
-			$("#txtSearch2").autocomplete({
 
-				source: '@Url.Action("GetDegree","Calories")',
-
-				minLength: 1
-
-			});
 		});
 
 	</script>
@@ -141,14 +113,12 @@
 	@using (Html.BeginForm("Index", "Calories", FormMethod.Post))
 	{
 		<p>Sport Type: </p>@Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" }) <br />
-		<p>Degree: </p>@Html.TextBox("degree", null, new { id = "txtSearch2", Class = "autosuggest" })<br />
 		<p>Weight (in Kg)</p>@Html.TextBox("weight", null, new { @type = "number" })<br />
 		<p>Duration (in hours)</p>@Html.TextBox("duration", null, new { @type = "number" })<br />
-		<input id="submitt" type="submit" value="Submit" />
+		<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
 	}
 </div>
 @{
 	var data = ViewBag.Message;
 }
 <h3>@data</h3>
-

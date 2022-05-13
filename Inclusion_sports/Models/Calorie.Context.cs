@@ -13,10 +13,10 @@ namespace Inclusion_sports.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CalorieEntities2 : DbContext
+    public partial class CalorieEntities3 : DbContext
     {
-        public CalorieEntities2()
-            : base("name=CalorieEntities2")
+        public CalorieEntities3()
+            : base("name=CalorieEntities3")
         {
         }
     
