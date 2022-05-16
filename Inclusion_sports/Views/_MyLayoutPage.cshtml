@@ -1,9 +1,4 @@
-﻿
-
-@{
-	ViewBag.Title = "Home";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
 	<title>@ViewBag.Title - Pride MelbSports</title>
@@ -100,10 +95,10 @@
 										@Html.ActionLink("HOME", "Index", "Home", null, new { @class = "rd-nav-link" })
 									</li>
 									<li class="rd-nav-item">
-										@Html.ActionLink("EVENTS", "Index", "Events", null, new { @class = "rd-nav-link" })
+										@Html.ActionLink("EVENT CALENDAR", "Index", "Events", null, new { @class = "rd-nav-link" })
 									</li>
 									<li class="rd-nav-item">
-										@Html.ActionLink("FIND CLUBS", "Index", "Maps", null, new { @class = "rd-nav-link" })
+										@Html.ActionLink("LGBT CLUBS", "Index", "Maps", null, new { @class = "rd-nav-link" })
 									</li>
 									<li class="rd-nav-item">
 										@Html.ActionLink("KNOW YOUR RIGHTS", "Index", "Rights", null, new { @class = "rd-nav-link" })
@@ -115,7 +110,7 @@
 										@Html.ActionLink("YOGA", "Index", "Yoga", null, new { @class = "rd-nav-link" })
 									</li>
 									<li class="rd-nav-item">
-										@Html.ActionLink("CALCULATE CALORIE", "Index", "Calories", null, new { @class = "rd-nav-link" })
+										@Html.ActionLink("CALORIE CALCULATOR", "Index", "Calories", null, new { @class = "rd-nav-link" })
 									</li>
 								</ul>
 							</div>
@@ -127,7 +122,7 @@
 		<div>
 			@RenderBody()
 		</div>
-		<!-- Page Footer--><a class="banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img src="images/intense_big_02.jpg" alt="" /></a>
+		<!-- Page Footer-->
 		<footer class="section footer-corporate context-dark">
 			<div class="footer-corporate-inset">
 				<div class="container">
@@ -166,12 +161,12 @@
 								<div class="wow slideInLeft" data-wow-delay="0s">
 									<h6 class="text-spacing-100 text-uppercase">Quick links</h6>
 									<ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
-										<li><a href='@Url.Action("Index", "Maps/Index")'>Find Clubs</a></li>
+										<li><a href='@Url.Action("Index", "Maps/Index")'>LGBT Clubs</a></li>
 										<li><a href='@Url.Action("Index", "Events/Index")'>Event Calendar</a></li>
 										<li><a href='@Url.Action("Index", "Rights/Index")'>Know your rights</a></li>
 										<li><a href="@Url.Action("Index", "TrustHeteros/Index")">Facts</a></li>
 										<li><a href="@Url.Action("Index", "Yoga/Index")">Learn Yoga</a></li>
-										<li><a href="Home/#about">About us</a></li>
+										<li><a href="@Url.Action("Index", "Calories/Index")">Learn Yoga</a></li>
 									</ul>
 								</div>
 							</div>

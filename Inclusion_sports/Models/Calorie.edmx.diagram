@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9751070161d14de0ac048f4e78f9d98f" Name="Diagram1">
         <EntityTypeShape EntityType="CalorieModel.Calorie" Width="1.5" PointX="4.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CalorieModel.History" Width="1.5" PointX="7.25" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Inclusion_sports.Models.Calorie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Calorie Calculator";
     Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 
@@ -119,11 +119,18 @@
 
 <div class="form-group">
 	@using (Html.BeginForm("Index", "Calories", FormMethod.Post))
-	{
-		<p>Sport Type: </p>@Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" }) <br />
-		<p>Weight (in Kg)</p>@Html.TextBox("weight", null, new { @type = "number" })<br />
-		<p>Duration (in hours)</p>@Html.TextBox("duration", null, new { @type = "number" })<br />
-		<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
+	{	
+
+			<p>Sport Type: </p>@Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" }) <br />
+			<p>Weight (in Kg)</p>@Html.TextBox("weight", null, new { @type = "float" })<br />
+			<p>Duration (in hours)</p>@Html.TextBox("duration", null, new { @type = "float" })<br />
+
+		<br />
+		<br />
+
+			<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
+
+
 	}
 </div>
 @{

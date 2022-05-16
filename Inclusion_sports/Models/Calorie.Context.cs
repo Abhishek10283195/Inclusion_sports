@@ -26,5 +26,6 @@ namespace Inclusion_sports.Models
         }
     
         public virtual DbSet<Calorie> Calories { get; set; }
+        public virtual DbSet<History> Histories { get; set; }
     }
 }

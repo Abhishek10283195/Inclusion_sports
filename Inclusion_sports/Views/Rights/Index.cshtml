@@ -1,25 +1,32 @@
 ﻿
 @{
-    ViewBag.Title = "Know your Rights";
-    Layout = "~/Views/_MyLayoutPage.cshtml";
+	ViewBag.Title = "Know your Rights";
+	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 <style>
 	*, *::before, *::after {
 		box-sizing: border-box;
 		font-family: 'Montserrat', sans-serif;
 	}
+
 	#text {
 		font-family: 'Montserrat', sans-serif;
 	}
+
 	#bot {
 		font-family: 'Montserrat', sans-serif;
 	}
+
 	#heading {
 		font-family: 'Montserrat', sans-serif;
 	}
 
-
-/*
+	#kyr {
+		width: 800px;
+		height: 300px;
+		overflow: scroll;
+	}
+	/*
 	body {
 		padding: 0;
 		margin: 0;
@@ -60,35 +67,70 @@
 	.btn:hover {
 		border-color: black;
 	}
+
 	.jumbotron {
 		padding-bottom: 20px;
 	}
-	.jumbotron .title h4 {
-		font-family: 'Montserrat', sans-serif;
-		text-align: center;
-	}
+
+		.jumbotron .title h4 {
+			font-family: 'Montserrat', sans-serif;
+			text-align: center;
+		}
 
 
-	.jumbotron .title p {
-		font-family: 'Montserrat', sans-serif;
-		text-align: center;
-		font-size: 20px;
-	}
-
+		.jumbotron .title p {
+			font-family: 'Montserrat', sans-serif;
+			text-align: center;
+			font-size: 20px;
+		}
 </style>
 
 <section class="sectoion-100px knowrights">
 	<div class="jumbotron">
 		<div class="title">
 			<h4>WHAT DO YOU WANT TO DO TODAY?</h4>
-				<p>Read through a few scenarios below to know more about your rights in Sports</p>
-				<p>If you want to report an incident or tell us how you feel, click on the below button</p>
-				<p><a class="button button-secondary button-pipaluk" href='@Url.Action("Create", "Reporting")'>Report Incident &raquo;</a></p>
+			<p>Read through a few scenarios below to know more about your rights in Sports</p>
+			<p>If you want to report an incident or tell us how you feel, click on the below button</p>
+			<p><a class="button button-secondary button-pipaluk" href='@Url.Action("Create", "Reporting")'>Report Incident &raquo;</a></p>		
 		</div>
 	</div>
 </section>
 
-<div class="container" id="gamec">
+
+<section>
+	<div class="container" id="kyr">
+		<h3 style="text-align:center; font-size:24px;">WHAT DOES THE LAW SAY?</h3>
+		<p>According to Victorian Equal Opportunity & Human Rights Commission, people should always feel safe and inclusive in sports. We all have a right to be treated equally and fairly when playing, coaching, umpiring and administrating sports.</p>
+
+		<h3 style="font-size: 24px">What does the law say about discrimination?</h3>
+
+			<p>Under the federal Sex Discrimination Act 1984 [Cth] [the Act], discrimination on the basis of sex or gender identity can include both direct and indirect discrimination.</p>
+
+			<p>‘Direct discrimination’ occurs when a person is treated less favourably than another person because of sex or gender identity.</p>
+
+			<p>‘Indirect discrimination’ occurs when a condition, requirement or practice that applies to everyone, disadvantages persons of a particular sex or gender identity, and the condition, requirement or practice is not reasonable in the circumstances.</p>
+
+			<p>Sport usually involves the provision of ‘goods, services and facilities’ and—where the definition of ‘club’ is met—the provision of club membership and benefits. Participation in sport may also involve requests for information.</p>
+
+			<p>Discrimination in the context of sport may arise if a sporting organisation refuses to allow a transgender or gender diverse person:</p>
+			<p>1)	to participate in the competitions it runs, or <br />
+			2)	to join the club it operates.</p>
+			<h3 style="font-size: 24px">How does the law protect me?</h3>
+			<p>Unless with special measures that comes under any of the relevant exemptions, it is against the law for a club to discriminate applicants for memberships based on their personal choices and characteristics.</p>
+			<p>If you are already a member of a club, discrimination could include:</p>
+			<p>1)Cancelling your membership based one's sexual orientation or Gender <br />
+			2)	Altering the terms of the membership based on one's sexual orientation or Gender. <br />
+			3)	Denying or limiting the access tho the club benifits based on Gender, such as entry to the Pool or Dressing room. <br />
+
+			If you are applying to be a member of a club, discrimination could include: <br />
+			1)	Rejecting applicates based on their sexual orientations <br />
+			2)	setting inequal terms of membership based on Gender, for example, offering full term memberships to men only <br />
+			3)	Demanding a character reference for applicants based on Gender. <br />
+
+			<b>Under the Equal Opportunity Act 2010, sports clubs and organisations have a positive duty to eliminate discrimination and victimisation as far as possible.</b>
+		</p>
+	</div>
+	<div class="container" id="gamec">
 		<div id="heading"><h3>Text</h3></div>
 		<div id="text">Text</div>
 		<div id="bot">Text</div>
@@ -97,380 +139,383 @@
 			<button class="btn" id="btnjs">Option 3</button>
 			<button class="btn" id="btnjs">Option 4</button>
 		</div>
-</div>
-
+	</div>
+	<br />
+	<br />
+</section>
 
 @section Scripts{
-<script>
-	const textElement = document.getElementById('text')
-	const headElement = document.getElementById('heading')
-	const botElement = document.getElementById('bot')
-	const note = document.querySelector('#heading')
-	const bot = document.querySelector('#bot')
-	const note2 = document.querySelector('#text')
-	const optionButtonsElement = document.getElementById('option-buttons')
 
-	note.style.fontSize = '22px'
-	note.style.fontWeight = 'bold'
-	bot.style.fontWeight = 'bold'
-	note2.style.fontSize = '16px'
+		<script>
+			const textElement = document.getElementById('text')
+			const headElement = document.getElementById('heading')
+			const botElement = document.getElementById('bot')
+			const note = document.querySelector('#heading')
+			const bot = document.querySelector('#bot')
+			const note2 = document.querySelector('#text')
+			const optionButtonsElement = document.getElementById('option-buttons')
 
-	let state = {}
+			note.style.fontSize = '22px'
+			note.style.fontWeight = 'bold'
+			bot.style.fontWeight = 'bold'
+			note2.style.fontSize = '16px'
 
-	function startGame() {
-		state = {}
-		showTextNode(1)
-	}
+			let state = { }
 
-	function showTextNode(textNodeIndex) {
-		const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
-
-		headElement.innerText = textNode.head
-		textElement.innerText = textNode.text
-		botElement.innerText = textNode.bot
-
-		while (optionButtonsElement.firstChild) {
-			optionButtonsElement.removeChild(optionButtonsElement.firstChild)
-			
+			function startGame() {
+				state = {}
+			showTextNode(1)
 		}
 
-		textNode.options.forEach(option => {
-			if (showOption(option)) {
-				const button = document.createElement('button')
-				button.innerText = option.text
-				button.classList.add('btn')
-				button.addEventListener('click', () => selectOption(option))
-				optionButtonsElement.appendChild(button)
+			function showTextNode(textNodeIndex) {
+			const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+
+			headElement.innerText = textNode.head
+			textElement.innerText = textNode.text
+			botElement.innerText = textNode.bot
+
+			while (optionButtonsElement.firstChild) {
+				optionButtonsElement.removeChild(optionButtonsElement.firstChild)
 
 			}
-		})
-	}
 
-	function showOption(option) {
-		return option.requiredState == null || option.requiredState(state)
-	}
+			textNode.options.forEach(option => {
+				if (showOption(option)) {
+					const button = document.createElement('button')
+			button.innerText = option.text
+			button.classList.add('btn')
+					button.addEventListener('click', () => selectOption(option))
+			optionButtonsElement.appendChild(button)
 
-	function selectOption(option) {
-		const nextTextNodeId = option.nextText
-		if (nextTextNodeId <= 0) {
-			return startGame()
+				}
+			})
 		}
-		state = Object.assign(state, option.setState)
-		showTextNode(nextTextNodeId)
-	}
 
-	const textNodes = [
-		{
-			id: 1,
+			function showOption(option) {
+			return option.requiredState == null || option.requiredState(state)
+		}
+
+			function selectOption(option) {
+			const nextTextNodeId = option.nextText
+			if (nextTextNodeId <= 0) {
+				return startGame()
+			}
+			state = Object.assign(state, option.setState)
+			showTextNode(nextTextNodeId)
+		}
+
+			const textNodes = [
+			{
+				id: 1,
 			head: 'BACKGROUND',
 			text: '\n' + 'Jessica discovered her sexual orientation a few years ago and is now happily married to Katherine. She is a sportsperson and wants to keep fit through sports. Recently, both Jessica and Katherine submitted applications to join a local sports club',
 			bot: '',
 			options: [
-				{
-					text: 'Next',
-					nextText: 2
-				}
+			{
+				text: 'Next',
+			nextText: 2
+					}
 			]
-		},
-		{
-			id: 2,
+			},
+			{
+				id: 2,
 			head: 'SCENARIO 1',
 			text: '\n' + 'When Jessica follows up on her application to the sports club, she is told that the club is not accepting new members as it had reached full capacity due to which her application was rejected.' + '\n' + '\n' +
-				'Jessica is surprised because her neighbour Adela, who had applied for the same membership a week later than when Jessica applied, was offered a membership.' + '\n',
+			'Jessica is surprised because her neighbour Adela, who had applied for the same membership a week later than when Jessica applied, was offered a membership.' + '\n',
 			bot: '\n' + 'Jessica decides to-',
 			options: [
-				{
-					text: 'Take a stand',
-					nextText: 3
-				},
-				{
-					text: 'Accept the rejection',
-					nextText: 4
-				},
-				{
-					text: 'Back to Background page',
-					nextText: -1
-				},
-				{
-					text: 'Skip',
-					nextText: 5
-				}
+			{
+				text: 'Take a stand',
+			nextText: 3
+					},
+			{
+				text: 'Accept the rejection',
+			nextText: 4
+					},
+			{
+				text: 'Back to Background page',
+			nextText: -1
+					},
+			{
+				text: 'Skip',
+			nextText: 5
+					}
 			]
-		},
-		{
-			id: 3,
+			},
+			{
+				id: 3,
 			head: 'SCENARIO 1',
 			text: '\n' + 'She says,' + '\n' + 'Unless with special measures that comes under any of the relevant exemptions, it is against the law for a club to discriminate applicants for memberships based on their personal choices and characteristics.' + '\n' + '\n' +
-				'Discrimination against an applicant includes - ' + '\n' +
-				'	1.' + ' Rejecting applicants based on their sexual orientations' + '\n' +
-				'	2.' + ' Setting inequal terms of memberships based on Gender, for example, offering full term memberships to men only' + '\n' +
-				'	3.' + ' Demanding a character reference for applicants based on Gender' + '\n' + '\n' +
-				"The club's refusal to accept Jessica's membership application is likely to fall under the above clauses and would amount to unlawful direct discrimination on the basis of personal characteristics." + '\n' + '\n',
+			'Discrimination against an applicant includes - ' + '\n' +
+			'	1.' + ' Rejecting applicants based on their sexual orientations' + '\n' +
+			'	2.' + ' Setting inequal terms of memberships based on Gender, for example, offering full term memberships to men only' + '\n' +
+			'	3.' + ' Demanding a character reference for applicants based on Gender' + '\n' + '\n' +
+			"The club's refusal to accept Jessica's membership application is likely to fall under the above clauses and would amount to unlawful direct discrimination on the basis of personal characteristics." + '\n' + '\n',
 			bot: "As a result, Jessica's application was accepted and they became members of the club",
 			options: [
-				{
-					text: 'To Scenario 2',
-					            nextText: 5
-				},
-				{
-					text: 'Back',
-					nextText: 2
-				}
+			{
+				text: 'To Scenario 2',
+			nextText: 5
+					},
+			{
+				text: 'Back',
+			nextText: 2
+					}
 			]
-		},
-		{
-			id: 4,
+			},
+			{
+				id: 4,
 			head: 'SCENARIO 1',
 			text: '',
 			bot: '\n' + 'Jessica and Katherine could not join the club',
 			options: [
-				{
-					text: 'Back to scenario 1',
-					            nextText: 2
-				}
-        ]
-		},
-		{
-			id: 5,
+			{
+				text: 'Back to scenario 1',
+			nextText: 2
+					}
+			]
+			},
+			{
+				id: 5,
 			head: 'SCENARIO 2',
 			text: '\n' + 'Jessica enjoys sports and often attends the activities and events held by the clubs. Recently, she received an email saying that the club is currently offering a lifetime membership options to their current club members, which will have a discount on the membership fee. Jessica, along with her friend Alex decide to apply for the lifetime membership. Jessica’s application was rejected unfortunately due to the limited capacity. However, several days later, Jessica finds that Alex got the lifetime membership.',
 			bot: '\n' + 'Jessica decides to-',
 			options: [
-				{
-		            text: 'Argue with the club',
-		            nextText: 6
-				},
-				{
-					text: 'Accept the situation',
-					nextText: 7
-				},
-				{
-					text: 'Back to Scenario 1',
-					nextText: 2
-				},
-				{
-					text: 'Skip',
-					nextText: 8
-				}
-		    ]
-		},
-		{
-			id: 6,
+			{
+				text: 'Argue with the club',
+			nextText: 6
+					},
+			{
+				text: 'Accept the situation',
+			nextText: 7
+					},
+			{
+				text: 'Back to Scenario 1',
+			nextText: 2
+					},
+			{
+				text: 'Skip',
+			nextText: 8
+					}
+			]
+			},
+			{
+				id: 6,
 			head: 'SCENARIO 2',
 			text: '\n' + 'She says,' + '\n' + 'Unless with special measures that comes under any of the relevant exemptions, it is against the law for a club to discriminate applicants for memberships based on their personal choices and characteristics.' + '\n' + '\n' +
-				'Discrimination against an applicant includes - ' + '\n' +
-				'	1.' + " Cancelling the membership based one's sexual orientation or Gender" + '\n' +
-				'	2.' + " Altering the terms of the membership based on one's sexual orientation or Gender" + '\n' +
-				'	3.' + ' Denying or limiting the access tho the club benifits based on Gender, such as entry to the Pool or Dressing room ' + '\n' + '\n' +
-				"The club's refusal to accept Jessica's lifetime membership is likely to fall under the above clauses and would amount to unlawful direct discrimination on the basis of personal characteristics." + '\n' + '\n',
+			'Discrimination against an applicant includes - ' + '\n' +
+			'	1.' + " Cancelling the membership based one's sexual orientation or Gender" + '\n' +
+			'	2.' + " Altering the terms of the membership based on one's sexual orientation or Gender" + '\n' +
+			'	3.' + ' Denying or limiting the access tho the club benifits based on Gender, such as entry to the Pool or Dressing room ' + '\n' + '\n' +
+			"The club's refusal to accept Jessica's lifetime membership is likely to fall under the above clauses and would amount to unlawful direct discrimination on the basis of personal characteristics." + '\n' + '\n',
 			bot: "As a result, Jessica's application for a lifetime membership was accepted",
 
 			options: [
-		        {
-		            text: 'To Scenario 3',
-		            nextText: 8
-				},
-				{
-					text: 'Back',
-					nextText: 5
-				}
-		    ]
-		},
-		{
-			id: 7,
+			{
+				text: 'To Scenario 3',
+			nextText: 8
+					},
+			{
+				text: 'Back',
+			nextText: 5
+					}
+			]
+			},
+			{
+				id: 7,
 			head: 'SCENARIO 2',
 			bot: '\n' + 'Jessica did not get a lifetime membership. She has to pay $20 extra than what Alex is paying',
 			text: '',
 			options: [
-		        {
-		            text: 'Back to Scenario 2',
-		            nextText: 5
-		        }
-		    ]
-		},
-		{
-			id: 8,
+			{
+				text: 'Back to Scenario 2',
+			nextText: 5
+					}
+			]
+			},
+			{
+				id: 8,
 			head: 'SCENARIO 3',
 			text: '\n' + 'Jessica, while in the storage room of the sports club, heard unfriendly verbal comments from her peers regarding her sexual orientation. This was not the first time she felt they did not belong in the club.',
 			bot: '\n' + 'Jessica decides to-',
 			options: [
-		        {
-		            text: 'Take a stand',
-		            nextText: 9
-		        },
-		        {
-		            text: 'Let it go',
-		            nextText: 10
-				},
-				{
-					text: 'Back to Scenario 2',
-					nextText: 5
-				},
-				{
-					text: 'Skip',
-					nextText: 11
-				}
-		    ]
-		},
-		{
-			id: 9,
+			{
+				text: 'Take a stand',
+			nextText: 9
+					},
+			{
+				text: 'Let it go',
+			nextText: 10
+					},
+			{
+				text: 'Back to Scenario 2',
+			nextText: 5
+					},
+			{
+				text: 'Skip',
+			nextText: 11
+					}
+			]
+			},
+			{
+				id: 9,
 			head: 'SCENARIO 3',
 			text: '\n' + 'She says' + '\n' + 'Every Victorian has the right to equal and effective protection against discrimination, and to enjoy their human rights without discrimination. Even in Sports, it is unlawful to discriminate on the basis of a number of protected attributes including age, disability, race, sex, intersex status, gender identity and sexual orientation ',
 			bot: '\n' + 'The members apologise to Jessica for exhibhiting discrimative behaviours',
 			options: [
-				{
-					text: 'To Scenario 4',
-					nextText: 11
-				},
-				{
-					text: 'Back',
-					nextText: 8
-				}
+			{
+				text: 'To Scenario 4',
+			nextText: 11
+					},
+			{
+				text: 'Back',
+			nextText: 8
+					}
 			]
-		},
-		{
-			id: 10,
+			},
+			{
+				id: 10,
 			head: 'SCENARIO 3',
 			text: '',
 			bot: '\n' + 'Jessica and Katherine are discriminated very often for their choice of sexual orientation',
 			options: [
-		        {
-		            text: 'Back to Scenario 3',
-		            nextText: 8
-		        }
-		    ]
-		},
-		{
-			id: 11,
+			{
+				text: 'Back to Scenario 3',
+			nextText: 8
+					}
+			]
+			},
+			{
+				id: 11,
 			head: 'SCENARIO 4',
 			text: '\n' + 'Jessica and Katherine were still being discriminated by new members in the club. Jessica decides to file a complaint to the club. However, the club manager considers this as a sensitive issue and there is nothing they can do about it',
 			bot: '\n' + 'Jessica decides to-',
 			options: [
-				{
-					text: 'Take a stand',
-					nextText: 12
-				},
-				{
-					text: 'Give up complaining',
-					nextText: 13
-				},
-				{
-					text: 'Back to Scenario 3',
-					nextText: 8
-				},
-				{
-					text: 'Skip',
-					nextText: 14
-				}
+			{
+				text: 'Take a stand',
+			nextText: 12
+					},
+			{
+				text: 'Give up complaining',
+			nextText: 13
+					},
+			{
+				text: 'Back to Scenario 3',
+			nextText: 8
+					},
+			{
+				text: 'Skip',
+			nextText: 14
+					}
 			]
-		},
-		{
-			id: 12,
+			},
+			{
+				id: 12,
 			head: 'SCENARIO 4',
 			text: '\n' + 'She says,' + '\n' + 'Clubs have a legal responsibility to make sure that all members of the club should be treated fairly and with respect. They have a positive responsibility to eliminate discrimination, sexual harassment, and victimisation as far as possible' + '\n' + '\n' +
-				'While a person who discriminates against or sexually harasses someone else is primarily responsible for their own behavior, in some cases the club is also held responsible for unlawful behavior if that person acted on the club’s instructions or under its authority.',
+			'While a person who discriminates against or sexually harasses someone else is primarily responsible for their own behavior, in some cases the club is also held responsible for unlawful behavior if that person acted on the club’s instructions or under its authority.',
 			bot: '',
 			options: [
-				{
-					text: 'To Scenario 5',
-					nextText: 14
-				},
-				{
-					text: 'Back',
-					nextText: 11
-				}
+			{
+				text: 'To Scenario 5',
+			nextText: 14
+					},
+			{
+				text: 'Back',
+			nextText: 11
+					}
 			]
-		},		
-		{
-			id: 13,
+			},
+			{
+				id: 13,
 			head: 'SCENARIO 4',
 			text: '',
 			bot: '\n' + 'Jessica and Katherine are discriminated very often for their choice of sexual orientation',
 			options: [
-				{
-					text: 'Back to Scenario 4',
-					nextText: 11
-				}
+			{
+				text: 'Back to Scenario 4',
+			nextText: 11
+					}
 			]
-		},
-		{
-			id: 14,
+			},
+			{
+				id: 14,
 			head: 'SCENARIO 5',
 			text: '\n' + 'Jessica decides to seek the help from Victorian Equal Opportunity and Human Rights Commission through:',
 			bot: '',
 			options: [
-				{
-					text: 'Call',
-					nextText: 15
-				},
-				{
-					text: 'Email',
-					nextText: 16
-				},
-				{
-					text: 'File a complaint online',
-					nextText: 17
-				},
-				{
-					text: 'Use the community reporting tool',
-					nextText: 18
-				},
-				{
-					text: 'Back to Scenario 4',
-					nextText: 11
-				}
+			{
+				text: 'Call',
+			nextText: 15
+					},
+			{
+				text: 'Email',
+			nextText: 16
+					},
+			{
+				text: 'File a complaint online',
+			nextText: 17
+					},
+			{
+				text: 'Use the community reporting tool',
+			nextText: 18
+					},
+			{
+				text: 'Back to Scenario 4',
+			nextText: 11
+					}
 			]
-		},
-		{
-			id: 15,
+			},
+			{
+				id: 15,
 			head: 'SCENARIO 5',
 			text: '\n' + 'The Victorian Equal Opportunity and Human Rights Commission offers a free phone service that provides information on how to seek help for matters like discrimination, victimisation, and equal opportunity and human rights in Victoria. Anyone can contact them on weekdays from 10am to 3pm',
 			bot: '\n' + 'Phone no. - 1300 292 153',
 			options: [
-				{
-					text: 'Back',
-					nextText: 14
-				}
+			{
+				text: 'Back',
+			nextText: 14
+					}
 			]
-		},
-		{
-			id: 16,
+			},
+			{
+				id: 16,
 			head: 'SCENARIO 5',
 			text: '\n' + 'Send them an email with issues and they will get back as soon as they can to provide information about rights under Victorian law.',
 			bot: '\n' + 'Email them at enquiries@veohrc.vic.gov.au',
 			options: [
-				{
-					text: 'Back',
-					nextText: 14
-				}
+			{
+				text: 'Back',
+			nextText: 14
+					}
 			]
-		},
-		{
-			id: 17,
+			},
+			{
+				id: 17,
 			head: 'SCENARIO 5',
 			text: '\n' + 'Your personal information will be used and stored in accordance with the Privacy policy and Data Protection Act 2014 (Vic). If they cannot provide dispute resolution service to you, they will give you information about other organisations or services that might be able to help.',
 			bot: '\n' + 'Link to fill an online complaint form - https://webforms.humanrights.vic.gov.au/prd?entitytype=Case&layoutcode=ComplaintWebForm&Refresh=True',
 			options: [
-				{
-					text: 'Back',
-					nextText: 14
-				}
+			{
+				text: 'Back',
+			nextText: 14
+					}
 			]
-		},
-		{
-			id: 18,
+			},
+			{
+				id: 18,
 			head: 'SCENARIO 5',
 			text: '\n' + 'If you want to tell them about your experience, but you do not want to make a formal complaint, you can make a report to them using our Community Reporting Tool.',
 			bot: '\n' + 'Link to the community reporting tool - https://www.humanrights.vic.gov.au/get-help/community-reporting-tool/',
 			options: [
-				{
-					text: 'Back',
-					nextText: 14
-				}
+			{
+				text: 'Back',
+			nextText: 14
+					}
 			]
-		}
-	]
+			}
+			]
 
-	startGame()
-</script>
+			startGame()
+	</script>
 } 

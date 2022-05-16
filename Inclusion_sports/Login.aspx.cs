@@ -18,7 +18,8 @@ namespace Inclusion_sports
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    Response.Redirect("Rights/Index");
+                    Response.Redirect("Histories/Create");
+                    LogoutButton.Visible = true;
                 }
                 else
                 {
