@@ -11,11 +11,13 @@ namespace Inclusion_sports.Models
 {
     using System;
     using System.Collections.Generic;
-    
+	using System.ComponentModel.DataAnnotations;
+
     public partial class Calorie
     {
         public int Id { get; set; }
         public string SportName { get; set; }
+        [Required]
         public string SportDegree { get; set; }
         public string Degree { get; set; }
         public decimal Coef { get; set; }

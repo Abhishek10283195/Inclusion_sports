@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Inclusion_sports.Models.Calorie>
 
 @{
-    ViewBag.Title = "Calorie Calculator";
-    Layout = "~/Views/_MyLayoutPage.cshtml";
+	ViewBag.Title = "Calorie Calculator";
+	Layout = "~/Views/_MyLayoutPage.cshtml";
 }
 
 @*<h4>Add Users via Excel</h4>
@@ -31,54 +31,54 @@
 	}*@
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SportName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SportDegree)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Degree)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Coef)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Intercept)
-        </th>
-        <th></th>
-    </tr>
+		@Html.ActionLink("Create New", "Create")
+	</p>
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.SportName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.SportDegree)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Degree)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Coef)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Intercept)
+			</th>
+			<th></th>
+		</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SportName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SportDegree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Degree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Coef)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Intercept)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.SportName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SportDegree)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Degree)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Coef)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Intercept)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+				@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id=item.Id })
+			</td>
+		</tr>
+	}
 
-</table>*@
+	</table>*@
 
 @section Scripts{
 
@@ -98,8 +98,8 @@
 
 
 		});
+		</script>
 
-	</script>
 
 }
 
@@ -119,10 +119,10 @@
 
 <div class="form-group">
 	@using (Html.BeginForm("Index", "Calories", FormMethod.Post))
-	{	
+	{
 
-			<p>Sport Type: @Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" })			Weight (in Kg): @Html.TextBox("weight", null, new { @type = "float" })			Duration (in hours): @Html.TextBox("duration", null, new { @type = "float" }) </p><br />
-			<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
+		<p>Sport Type: @Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest", required = "required" })			Weight (in Kg): @Html.TextBox("weight", null, new { id = "wght", @type = "float", required = "required", title = "Enter weight greater than 20" })			Duration (in hours): @Html.TextBox("duration", null, new { @type = "float", required = "required" }) </p><br />
+		<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
 
 
 	}
