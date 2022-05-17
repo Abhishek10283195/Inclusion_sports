@@ -121,13 +121,7 @@
 	@using (Html.BeginForm("Index", "Calories", FormMethod.Post))
 	{	
 
-			<p>Sport Type: </p>@Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" }) <br />
-			<p>Weight (in Kg)</p>@Html.TextBox("weight", null, new { @type = "float" })<br />
-			<p>Duration (in hours)</p>@Html.TextBox("duration", null, new { @type = "float" })<br />
-
-		<br />
-		<br />
-
+			<p>Sport Type: @Html.TextBox("sportstype", null, new { id = "txtSearch", Class = "autosuggest" })			Weight (in Kg): @Html.TextBox("weight", null, new { @type = "float" })			Duration (in hours): @Html.TextBox("duration", null, new { @type = "float" }) </p><br />
 			<button class="button button-secondary button-pipaluk" id="submitt">Calculate Calorie</button>
 
 

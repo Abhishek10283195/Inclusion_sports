@@ -20,10 +20,10 @@ namespace Inclusion_sports.Models
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    throw new UnintentionalCodeFirstException();
+        //}
     
         public virtual DbSet<Calorie> Calories { get; set; }
         public virtual DbSet<History> Histories { get; set; }
